@@ -18,24 +18,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.8,
-      alternates: {
-        languages: {
-          zh: `${baseUrl}/zh`,
-          en: `${baseUrl}/en`,
-        },
-      },
     },
     {
       url: `${baseUrl}/zh`,
       lastModified: currentDate,
       changeFrequency: 'monthly',
       priority: 0.8,
-      alternates: {
-        languages: {
-          en: `${baseUrl}/en`,
-          zh: `${baseUrl}/zh`,
-        },
-      },
     },
   ]
 }
