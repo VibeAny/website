@@ -10,6 +10,8 @@ const nextConfig: NextConfig = {
   distDir: '.next',
   generateEtags: false,
   experimental: {},
+  // Note: headers() and redirects() don't work with static export
+  // These would need to be configured at the hosting level (GitHub Pages, CDN, etc.)
 };
 
 export default nextConfig;

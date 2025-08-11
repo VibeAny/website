@@ -3,6 +3,11 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { ArrowRight, Zap, Shield, Cloud, GitBranch, Globe, Sparkles, Star } from "lucide-react"
 import Link from 'next/link'
+import { Metadata } from 'next'
+
+type Props = {
+  params: Promise<{ locale: string }>
+}
 
 export async function generateStaticParams() {
   return [
@@ -11,7 +16,42 @@ export async function generateStaticParams() {
   ]
 }
 
-export default function Home() {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params
+  
+  const titles = {
+    en: 'English - VibeMCP.net | The Vibe-First MCP Platform',
+    zh: '中文 - VibeMCP.net | 体验优先的MCP平台'
+  }
+  
+  const descriptions = {
+    en: 'VibeMCP.net English version - Transform MCP service deployment from complex to simple, from local to cloud. Configure Once, Connect Everywhere with Project Tesseract.',
+    zh: 'VibeMCP.net 中文版 - 让MCP服务部署从复杂变简单，从本地变云端。Project Tesseract，一次配置，随处连接。'
+  }
+  
+  return {
+    title: titles[locale as keyof typeof titles] || titles.en,
+    description: descriptions[locale as keyof typeof descriptions] || descriptions.en,
+    alternates: {
+      canonical: `https://vibemcp.net/${locale}`,
+      languages: {
+        'en-US': 'https://vibemcp.net/en',
+        'zh-CN': 'https://vibemcp.net/zh',
+      },
+    },
+    openGraph: {
+      title: titles[locale as keyof typeof titles] || titles.en,
+      description: descriptions[locale as keyof typeof descriptions] || descriptions.en,
+      url: `https://vibemcp.net/${locale}`,
+      locale: locale === 'zh' ? 'zh_CN' : 'en_US',
+      alternateLocale: locale === 'zh' ? 'en_US' : 'zh_CN',
+    },
+  }
+}
+
+export default async function Home({ params }: Props) {
+  const { locale } = await params
+  
   return (
     <div className="min-h-screen animated-gradient relative overflow-hidden">
       {/* Enhanced Background Elements with Particles */}
@@ -33,10 +73,10 @@ export default function Home() {
 
       {/* Header */}
       <header className="container mx-auto px-4 py-6 relative z-10 fade-in">
-        <nav className="glass-card rounded-2xl px-6 py-4 flex items-center justify-between hover-lift">
+        <nav className="glass-card rounded-2xl px-6 py-4 flex items-center justify-between hover-lift" role="navigation" aria-label="Main navigation">
           <div className="flex items-center space-x-2">
             <div className="w-10 h-10 neumorphism rounded-xl flex items-center justify-center shadow-lg pulse-glow">
-              <span className="text-2xl">🔷</span>
+              <span className="text-2xl" role="img" aria-label="Tesseract">🔷</span>
             </div>
             <span className="text-xl font-bold text-gradient">
               VibeMCP.net
@@ -52,10 +92,10 @@ export default function Home() {
             <a href="#docs" className="text-muted-foreground hover:text-primary transition-all duration-300 hover-glow px-3 py-1 rounded-lg">
               Docs
             </a>
-            <Link href="/zh">
+            <Link href={locale === 'zh' ? '/en' : '/zh'} hrefLang={locale === 'zh' ? 'en' : 'zh'}>
               <Button variant="ghost" size="sm" className="glass-card hover-lift flex items-center gap-2">
                 <Globe className="h-4 w-4" />
-                <span className="text-sm font-medium">中文</span>
+                <span className="text-sm font-medium">{locale === 'zh' ? 'English' : '中文'}</span>
               </Button>
             </Link>
             <Button variant="outline" className="glass-card hover-lift">Sign In</Button>
@@ -65,23 +105,24 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section className="container mx-auto px-4 py-24 text-center relative z-10">
-        <div className="fade-in" style={{animationDelay: '0.2s'}}>
-          <Badge className="mb-8 glass-card px-6 py-2 hover-lift pulse-glow" variant="secondary">
-            <span className="text-gradient font-semibold">Project Tesseract 🔷</span>
-          </Badge>
-        </div>
-        <div className="fade-in" style={{animationDelay: '0.4s'}}>
-          <h1 className="text-6xl font-black mb-8 text-gradient leading-tight max-w-4xl mx-auto">
-            The Vibe-First MCP Platform
-          </h1>
-        </div>
-        <div className="fade-in" style={{animationDelay: '0.6s'}}>
-          <p className="text-xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed font-medium">
-            Configure Once, Connect Everywhere. Transform MCP service deployment from complex to simple, 
-            from local to cloud. <span className="text-gradient font-semibold">Unleash the infinite power of AI connections</span> like the Infinity Stones.
-          </p>
-        </div>
+      <main>
+        <section className="container mx-auto px-4 py-24 text-center relative z-10">
+          <div className="fade-in" style={{animationDelay: '0.2s'}}>
+            <Badge className="mb-8 glass-card px-6 py-2 hover-lift pulse-glow" variant="secondary">
+              <span className="text-gradient font-semibold">Project Tesseract 🔷</span>
+            </Badge>
+          </div>
+          <div className="fade-in" style={{animationDelay: '0.4s'}}>
+            <h1 className="text-6xl font-black mb-8 text-gradient leading-tight max-w-4xl mx-auto">
+              The Vibe-First MCP Platform
+            </h1>
+          </div>
+          <div className="fade-in" style={{animationDelay: '0.6s'}}>
+            <p className="text-xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed font-medium">
+              Configure Once, Connect Everywhere. Transform MCP service deployment from complex to simple, 
+              from local to cloud. <span className="text-gradient font-semibold">Unleash the infinite power of AI connections</span> like the Infinity Stones.
+            </p>
+          </div>
         
         <div className="fade-in flex items-center justify-center gap-6 mb-16" style={{animationDelay: '0.8s'}}>
           <Button size="lg" className="btn-modern px-10 py-4 text-lg font-semibold hover-lift">
@@ -427,6 +468,7 @@ export default function Home() {
           </Button>
         </div>
       </section>
+      </main>
 
       {/* Footer */}
       <footer className="glass border-t-0 relative z-10">
