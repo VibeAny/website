@@ -4,6 +4,13 @@ import { Badge } from "@/components/ui/badge"
 import { ArrowRight, Zap, Shield, Cloud, GitBranch, Globe, Sparkles, Star } from "lucide-react"
 import Link from 'next/link'
 
+export async function generateStaticParams() {
+  return [
+    { locale: 'en' },
+    { locale: 'zh' }
+  ]
+}
+
 export default function Home() {
   return (
     <div className="min-h-screen animated-gradient relative overflow-hidden">
