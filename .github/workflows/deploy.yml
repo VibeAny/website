@@ -17,6 +17,9 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./src/official-site
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -24,8 +27,9 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "18"
+          node-version: "20"
           cache: npm
+          cache-dependency-path: './src/official-site/package-lock.json'
           
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -33,38 +37,29 @@ jobs:
           static_site_generator: next
           
       - name: Install dependencies
-        run: npm install
+        run: npm ci
         
       - name: Build with Next.js
         run: |
           echo "Starting Next.js build..."
-          npm run build 2>&1 | tee build.log
-          BUILD_EXIT_CODE=${PIPESTATUS[0]}
-          echo "Build completed with exit code: $BUILD_EXIT_CODE"
-          if [ $BUILD_EXIT_CODE -ne 0 ]; then
-            echo "Build failed! Log contents:"
-            cat build.log
-            exit $BUILD_EXIT_CODE
-          fi
-          echo "Attempting manual export..."
-          npx next export 2>&1 || echo "Export command not available in Next.js 15"
+          npm run build
+          echo "Build completed successfully!"
+          echo "Adding .nojekyll file for GitHub Pages..."
+          touch out/.nojekyll
         
       - name: List files after build
         run: |
           echo "Current directory contents:"
           ls -la
           echo "Checking if out directory exists:"
-          ls -la out/ || echo "out directory does not exist"
-          echo "Checking .next directory contents:"
-          ls -la .next/ || echo ".next directory does not exist"
-          echo "Looking for any export-related directories:"
-          find . -name "*export*" -o -name "*static*" -type d || echo "No export/static directories found"
+          ls -la out/
+          echo "Out directory contents:"
+          find out/ -type f | head -20
         
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./out
-          name: github-pages
+          path: ./src/official-site/out
 
   deploy:
     environment:

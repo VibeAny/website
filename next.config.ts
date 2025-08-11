@@ -6,6 +6,9 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
+  // Ensure static export works in all environments
+  distDir: '.next',
+  generateEtags: false,
   experimental: {},
 };
 
