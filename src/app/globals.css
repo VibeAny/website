@@ -1,0 +1,339 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Modern Color Palette & Variables */
+:root {
+  /* Enhanced color system for modern design */
+  --background: 0 0% 100%;
+  --foreground: 222.2 84% 4.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 222.2 84% 4.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222.2 84% 4.9%;
+  --primary: 228 94% 67%;  /* Modern blue */
+  --primary-foreground: 0 0% 100%;
+  --secondary: 310 100% 76%; /* Vibrant purple accent */
+  --secondary-foreground: 0 0% 100%;
+  --muted: 210 40% 96%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+  --accent: 51 100% 50%; /* Golden accent */
+  --accent-foreground: 222.2 84% 4.9%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --ring: 228 94% 67%;
+  --radius: 1rem; /* Increased for modern look */
+  
+  /* Custom gradient and glass variables */
+  --glass-bg: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.18);
+  --shadow-glass: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+  --shadow-neumorphism-light: 9px 9px 16px #d1d9e6, -9px -9px 16px #ffffff;
+  --shadow-neumorphism-inset: inset 6px 6px 10px #d1d9e6, inset -6px -6px 10px #ffffff;
+}
+
+.dark {
+  --background: 8 47% 9%;  /* Rich dark background */
+  --foreground: 213 31% 91%;
+  --card: 11 45% 12%;
+  --card-foreground: 213 31% 91%;
+  --popover: 11 45% 12%;
+  --popover-foreground: 213 31% 91%;
+  --primary: 228 94% 67%;
+  --primary-foreground: 8 47% 9%;
+  --secondary: 310 100% 76%;
+  --secondary-foreground: 8 47% 9%;
+  --muted: 16 33% 15%;
+  --muted-foreground: 215 20.2% 65.1%;
+  --accent: 51 100% 50%;
+  --accent-foreground: 8 47% 9%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 213 31% 91%;
+  --border: 16 33% 15%;
+  --input: 16 33% 15%;
+  --ring: 228 94% 67%;
+  
+  /* Dark mode glass effects */
+  --glass-bg: rgba(16, 16, 16, 0.4);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  --shadow-neumorphism-light: 9px 9px 16px #0a0a0a, -9px -9px 16px #1a1a1a;
+  --shadow-neumorphism-inset: inset 6px 6px 10px #0a0a0a, inset -6px -6px 10px #1a1a1a;
+}
+
+/* Base styles with modern enhancements */
+* {
+  border-color: hsl(var(--border));
+  scroll-behavior: smooth;
+}
+
+body {
+  background: 
+    radial-gradient(ellipse at top left, hsl(var(--primary) / 0.03) 0%, transparent 50%),
+    radial-gradient(ellipse at bottom right, hsl(var(--secondary) / 0.05) 0%, transparent 50%),
+    hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+  overflow-x: hidden;
+}
+
+/* Animated Gradient Backgrounds */
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.animated-gradient {
+  background: linear-gradient(-45deg, 
+    hsl(var(--primary)), 
+    hsl(var(--secondary)), 
+    hsl(var(--accent)), 
+    hsl(var(--primary))
+  );
+  background-size: 400% 400%;
+  animation: gradientShift 8s ease infinite;
+}
+
+/* Glassmorphism Effects */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-glass);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 
+    0 8px 32px 0 rgba(31, 38, 135, 0.15),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 
+    0 16px 64px 0 rgba(31, 38, 135, 0.2),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.15);
+}
+
+/* Neumorphism Effects */
+.neumorphism {
+  background: hsl(var(--background));
+  box-shadow: var(--shadow-neumorphism-light);
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.neumorphism:hover {
+  box-shadow: 
+    6px 6px 12px #d1d9e6, 
+    -6px -6px 12px #ffffff;
+  transform: translateY(-1px);
+}
+
+.neumorphism-inset {
+  background: hsl(var(--background));
+  box-shadow: var(--shadow-neumorphism-inset);
+}
+
+/* Particle Animation System */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33% { transform: translateY(-10px) rotate(120deg); }
+  66% { transform: translateY(5px) rotate(240deg); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { 
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+    transform: scale(1);
+  }
+  50% { 
+    box-shadow: 0 0 40px hsl(var(--primary) / 0.6);
+    transform: scale(1.05);
+  }
+}
+
+.floating-element {
+  animation: float 6s ease-in-out infinite;
+}
+
+.pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+/* Modern Typography */
+.text-gradient {
+  background: linear-gradient(135deg, 
+    hsl(var(--primary)), 
+    hsl(var(--secondary))
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 200%;
+  animation: gradientShift 4s ease infinite;
+}
+
+/* Enhanced Hover Effects */
+.hover-lift {
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.hover-glow {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.hover-glow::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.2), 
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.hover-glow:hover::before {
+  left: 100%;
+}
+
+/* Advanced Button Styles */
+.btn-modern {
+  position: relative;
+  background: linear-gradient(135deg, 
+    hsl(var(--primary)), 
+    hsl(var(--secondary))
+  );
+  border: none;
+  color: white;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 
+    0 4px 16px hsl(var(--primary) / 0.3),
+    0 0 0 1px hsl(var(--primary) / 0.1);
+}
+
+.btn-modern::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.3), 
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.btn-modern:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 8px 32px hsl(var(--primary) / 0.4),
+    0 0 0 1px hsl(var(--primary) / 0.2);
+}
+
+.btn-modern:hover::before {
+  left: 100%;
+}
+
+/* Micro Interactions */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-2px); }
+  20%, 40%, 60%, 80% { transform: translateX(2px); }
+}
+
+.hover-shake:hover {
+  animation: shake 0.5s ease-in-out;
+}
+
+/* Loading and Transition Effects */
+.fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { 
+    opacity: 0; 
+    transform: translateY(20px);
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Enhancements */
+@media (max-width: 768px) {
+  .glass {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  
+  body {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    hsl(var(--primary)), 
+    hsl(var(--secondary))
+  );
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    hsl(var(--secondary)), 
+    hsl(var(--primary))
+  );
+}
+
+/* Selection styling */
+::selection {
+  background: hsl(var(--primary) / 0.2);
+  color: hsl(var(--foreground));
+}
+
+::-moz-selection {
+  background: hsl(var(--primary) / 0.2);
+  color: hsl(var(--foreground));
+}
