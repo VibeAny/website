@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
-import { locales } from '../../i18n';
+import { locales } from '../../../i18n';
 import TesseractGemsBackground from '../../components/TesseractGemsBackground';
 
 const geistSans = Geist({
