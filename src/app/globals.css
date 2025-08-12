@@ -71,8 +71,8 @@
 
 body {
   background: 
-    radial-gradient(ellipse at top left, hsl(var(--primary) / 0.03) 0%, transparent 50%),
-    radial-gradient(ellipse at bottom right, hsl(var(--secondary) / 0.05) 0%, transparent 50%),
+    radial-gradient(ellipse at top left, hsl(var(--primary) / 0.01) 0%, transparent 50%),
+    radial-gradient(ellipse at bottom right, hsl(var(--secondary) / 0.02) 0%, transparent 50%),
     hsl(var(--background));
   color: hsl(var(--foreground));
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
@@ -89,13 +89,13 @@ body {
 
 .animated-gradient {
   background: linear-gradient(-45deg, 
-    hsl(var(--primary)), 
-    hsl(var(--secondary)), 
-    hsl(var(--accent)), 
-    hsl(var(--primary))
+    hsl(var(--primary) / 0.7), 
+    hsl(var(--secondary) / 0.7), 
+    hsl(var(--accent) / 0.7), 
+    hsl(var(--primary) / 0.7)
   );
   background-size: 400% 400%;
-  animation: gradientShift 8s ease infinite;
+  animation: gradientShift 12s ease infinite;
 }
 
 /* Glassmorphism Effects */
@@ -108,39 +108,39 @@ body {
 }
 
 .glass-card {
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   box-shadow: 
-    0 8px 32px 0 rgba(31, 38, 135, 0.15),
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.15);
+    0 4px 16px 0 rgba(31, 38, 135, 0.1),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.2);
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
 .glass-card:hover {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.4);
   transform: translateY(-2px);
   box-shadow: 
-    0 16px 64px 0 rgba(31, 38, 135, 0.2),
-    inset 0 1px 0 0 rgba(255, 255, 255, 0.2);
+    0 8px 24px 0 rgba(31, 38, 135, 0.15),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.25);
 }
 
 /* Dark mode glass card overrides */
 .dark .glass-card {
-  background: rgba(16, 16, 16, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(16, 16, 16, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 
-    0 8px 32px 0 rgba(0, 0, 0, 0.3),
+    0 4px 16px 0 rgba(0, 0, 0, 0.2),
     inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
 }
 
 .dark .glass-card:hover {
-  background: rgba(16, 16, 16, 0.6);
-  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(16, 16, 16, 0.8);
+  border-color: rgba(255, 255, 255, 0.3);
   box-shadow: 
-    0 16px 64px 0 rgba(0, 0, 0, 0.4),
+    0 8px 24px 0 rgba(0, 0, 0, 0.3),
     inset 0 1px 0 0 rgba(255, 255, 255, 0.15);
 }
 
@@ -173,12 +173,12 @@ body {
 
 @keyframes pulse-glow {
   0%, 100% { 
-    box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+    box-shadow: 0 0 10px hsl(var(--primary) / 0.2);
     transform: scale(1);
   }
   50% { 
-    box-shadow: 0 0 40px hsl(var(--primary) / 0.6);
-    transform: scale(1.05);
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.4);
+    transform: scale(1.02);
   }
 }
 

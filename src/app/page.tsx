@@ -1,33 +1,28 @@
 import Link from 'next/link'
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { ArrowRight, Sparkles, Star, Zap } from "lucide-react"
+import { ArrowRight, Zap } from "lucide-react"
 
 export default function RootPage() {
   return (
     <div className="min-h-screen animated-gradient relative overflow-hidden">
-      {/* Enhanced Background Elements with Particles */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-500/10 via-transparent to-transparent dark:from-blue-400/5" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1200px] bg-gradient-to-r from-primary/10 to-secondary/10 rounded-full blur-3xl pulse-glow" />
+      {/* Simplified Background Elements */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-500/5 via-transparent to-transparent dark:from-blue-400/3" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-r from-primary/5 to-secondary/5 rounded-full blur-3xl" />
       
-      {/* Floating Geometric Elements */}
-      <div className="absolute top-20 left-10 w-20 h-20 glass border-primary/30 rotate-12 rounded-lg floating-element" />
-      <div className="absolute top-40 right-20 w-16 h-16 neumorphism rotate-45 rounded-lg floating-element" style={{animationDelay: '2s'}} />
-      <div className="absolute bottom-40 left-20 w-12 h-12 glass-card rotate-45 floating-element" style={{animationDelay: '4s'}} />
-      <div className="absolute bottom-20 right-40 w-24 h-24 glass border-secondary/30 -rotate-12 rounded-full floating-element" style={{animationDelay: '1s'}} />
+      {/* Reduced Floating Geometric Elements */}
+      <div className="absolute top-20 left-10 w-16 h-16 glass border-primary/20 rotate-12 rounded-lg floating-element opacity-60" />
+      <div className="absolute bottom-20 right-40 w-20 h-20 glass border-secondary/20 -rotate-12 rounded-full floating-element opacity-60" style={{animationDelay: '1s'}} />
       
-      {/* Particle Elements */}
-      <div className="absolute top-32 right-1/4 w-2 h-2 bg-primary/60 rounded-full floating-element" style={{animationDelay: '0.5s'}} />
-      <div className="absolute top-1/3 left-1/4 w-1 h-1 bg-secondary/80 rounded-full floating-element" style={{animationDelay: '1.5s'}} />
-      <div className="absolute bottom-1/3 right-1/3 w-3 h-3 bg-accent/50 rounded-full floating-element" style={{animationDelay: '3s'}} />
-      <Sparkles className="absolute top-1/4 left-1/3 h-4 w-4 text-primary/40 floating-element" style={{animationDelay: '2.5s'}} />
-      <Star className="absolute bottom-1/4 right-1/4 h-3 w-3 text-secondary/50 floating-element" style={{animationDelay: '3.5s'}} />
+      {/* Minimal Particle Elements */}
+      <div className="absolute top-32 right-1/4 w-2 h-2 bg-primary/40 rounded-full floating-element opacity-50" style={{animationDelay: '0.5s'}} />
+      <div className="absolute bottom-1/3 right-1/3 w-2 h-2 bg-accent/40 rounded-full floating-element opacity-50" style={{animationDelay: '3s'}} />
 
       {/* Header */}
       <header className="container mx-auto px-4 py-6 relative z-10 fade-in">
         <nav className="glass-card rounded-2xl px-6 py-4 flex items-center justify-between hover-lift">
           <div className="flex items-center space-x-2">
-            <div className="w-10 h-10 neumorphism rounded-xl flex items-center justify-center shadow-lg pulse-glow">
+            <div className="w-10 h-10 neumorphism rounded-xl flex items-center justify-center shadow-lg">
               <span className="text-2xl" role="img" aria-label="Tesseract">🔷</span>
             </div>
             <span className="text-xl font-bold text-gradient">
@@ -49,7 +44,7 @@ export default function RootPage() {
       <main className="flex items-center justify-center min-h-[calc(100vh-200px)] relative z-10">
         <div className="text-center space-y-8 max-w-4xl mx-auto px-4">
           <div className="fade-in" style={{animationDelay: '0.2s'}}>
-            <Badge className="mb-8 glass-card px-6 py-2 hover-lift pulse-glow" variant="secondary">
+            <Badge className="mb-8 glass-card px-6 py-2 hover-lift" variant="secondary">
               <span className="text-gradient font-semibold">Project Tesseract 🔷</span>
             </Badge>
           </div>
@@ -73,7 +68,7 @@ export default function RootPage() {
 
           <div className="fade-in grid grid-cols-1 md:grid-cols-3 gap-8 mb-12" style={{animationDelay: '0.8s'}}>
             <div className="glass-card p-6 rounded-2xl hover-lift">
-              <Zap className="h-8 w-8 text-primary mx-auto mb-4 pulse-glow" />
+              <Zap className="h-8 w-8 text-primary mx-auto mb-4" />
               <div className="text-xl font-bold text-gradient mb-2">One-Click Deploy</div>
               <div className="text-sm text-muted-foreground">5-minute MCP service setup</div>
             </div>
