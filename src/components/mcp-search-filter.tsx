@@ -1,10 +1,9 @@
 'use client'
 
 import { useState, useMemo, useEffect } from 'react'
-import { Search, Filter, Award, Flame, Clock, ChevronDown } from 'lucide-react'
+import { Search, Award, Flame, Clock, ChevronDown } from 'lucide-react'
 import { Badge } from "@/components/ui/badge"
 import { McpServer, McpCategory } from '@/lib/mcp-data'
-import { languageIcons, languageLabels } from '@/lib/icons'
 
 interface McpSearchFilterProps {
   servers: McpServer[]

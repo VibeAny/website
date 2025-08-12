@@ -3,8 +3,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { PageLayout } from "@/components/ui/page-layout"
 import { ArrowRight, Shield, Lock, Cloud, Settings, Zap, Users } from "lucide-react"
-import Link from 'next/link'
-import { getTranslations } from 'next-intl/server'
 
 type Props = {
   params: Promise<{ locale: string }>
@@ -12,7 +10,6 @@ type Props = {
 
 export default async function PrivateMcpPage({ params }: Props) {
   const { locale } = await params
-  const t = await getTranslations({ locale })
   
   return (
     <PageLayout locale={locale} currentPath="/private-mcp">

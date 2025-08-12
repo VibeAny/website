@@ -5,16 +5,16 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Star, GitBranch, Database, ExternalLink, Award, Flame, Search, Eye, Github } from "lucide-react"
 import Link from 'next/link'
+import Image from 'next/image'
 import { McpServer } from '@/lib/mcp-data'
 import { languageIcons, languageLabels, platformIcons, platformLabels } from '@/lib/icons'
 import { formatGitHubNumber } from '@/lib/format'
 
 interface McpServerGridProps {
   servers: McpServer[]
-  showAll?: boolean
 }
 
-export function McpServerGrid({ servers, showAll = false }: McpServerGridProps) {
+export function McpServerGrid({ servers }: McpServerGridProps) {
   const displayServers = servers
 
   if (servers.length === 0) {
@@ -55,9 +55,11 @@ export function McpServerGrid({ servers, showAll = false }: McpServerGridProps) 
               <div className="flex items-center justify-between mb-4">
                 <div className="w-14 h-14 rounded-2xl overflow-hidden group-hover:scale-105 transition-transform duration-300 ring-2 ring-gray-100 group-hover:ring-purple-200">
                   {server.repository.avatar ? (
-                    <img 
+                    <Image 
                       src={server.repository.avatar} 
                       alt={`${server.repository.owner} avatar`}
+                      width={56}
+                      height={56}
                       className="w-full h-full object-cover"
                       loading="lazy"
                       onError={(e) => {

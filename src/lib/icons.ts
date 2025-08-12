@@ -99,7 +99,7 @@ export const osLabels: Record<string, string> = {
 }
 
 // Category icon mapping
-export const categoryIcons: Record<string, any> = {
+export const categoryIcons: Record<string, React.ComponentType<React.SVGProps<SVGSVGElement>>> = {
   link: Link,
   palette: Palette,
   globe: Globe,

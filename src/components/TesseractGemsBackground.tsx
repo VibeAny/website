@@ -12,30 +12,6 @@ interface Gem {
   size: number;
 }
 
-// Seeded random function for consistent rendering
-function seededRandom(seed: number): number {
-  const x = Math.sin(seed) * 10000;
-  return x - Math.floor(x);
-}
-
-const gemShapes = [
-  'gem-diamond',
-  'gem-hexagon', 
-  'gem-octagon',
-  'gem-star',
-  'gem-triangle',
-  'gem-crystal',
-  'gem-tesseract'  // Special Tesseract shape
-];
-
-const gemAnimations = [
-  'gem-float-1',
-  'gem-float-2', 
-  'gem-float-3',
-  'gem-pulse',
-  'gem-tesseract-rotate'  // Special Tesseract rotation
-];
-
 // Pre-generated gem data for consistent rendering
 const preGeneratedGems: Gem[] = [
   { id: 0, shape: 'gem-diamond', animation: 'gem-float-1', left: 25.3, top: 15.7, delay: 2.1, size: 0.8 },

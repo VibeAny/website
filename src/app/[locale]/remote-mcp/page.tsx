@@ -16,7 +16,6 @@ import {
   Clock,
   CheckCircle,
 } from "lucide-react";
-import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 
 type Props = {

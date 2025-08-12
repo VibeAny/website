@@ -86,7 +86,9 @@ function loadDatabaseSync(): McpDatabase {
   try {
     // Only import fs on server side
     if (typeof window === 'undefined') {
+      // eslint-disable-next-line @typescript-eslint/no-require-imports
       const fs = require('fs')
+      // eslint-disable-next-line @typescript-eslint/no-require-imports
       const path = require('path')
       const filePath = path.join(process.cwd(), 'public', 'mcp-servers-database.json')
       const fileContent = fs.readFileSync(filePath, 'utf8')
