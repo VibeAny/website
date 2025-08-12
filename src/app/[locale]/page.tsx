@@ -86,6 +86,9 @@ export default async function Home({ params }: Props) {
             <a href="#features" className="text-muted-foreground hover:text-primary transition-all duration-300 hover-glow px-3 py-1 rounded-lg">
               Features
             </a>
+            <Link href="/free-servers" className="text-muted-foreground hover:text-primary transition-all duration-300 hover-glow px-3 py-1 rounded-lg">
+              Free Servers
+            </Link>
             <a href="#pricing" className="text-muted-foreground hover:text-primary transition-all duration-300 hover-glow px-3 py-1 rounded-lg">
               Pricing
             </a>
@@ -129,12 +132,14 @@ export default async function Home({ params }: Props) {
             Start Free Trial
             <ArrowRight className="ml-3 h-5 w-5" />
           </Button>
-          <Button size="lg" variant="outline" className="glass-card hover-lift px-8 py-4 text-lg font-semibold">
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-              Watch Demo
-            </div>
-          </Button>
+          <Link href="/free-servers">
+            <Button size="lg" variant="outline" className="glass-card hover-lift px-8 py-4 text-lg font-semibold">
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                Try Free Servers
+              </div>
+            </Button>
+          </Link>
         </div>
         
         {/* Enhanced Hero Stats */}
