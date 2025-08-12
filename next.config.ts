@@ -1,17 +1,16 @@
 import type { NextConfig } from "next";
+import createNextIntlPlugin from 'next-intl/plugin';
+
+const withNextIntl = createNextIntlPlugin('./src/i18n.ts');
 
 const nextConfig: NextConfig = {
-  output: 'export',
+  // Remove static export for full i18n support
+  // output: 'export',
   trailingSlash: true,
   images: {
     unoptimized: true,
   },
-  // Ensure static export works in all environments
-  distDir: '.next',
-  generateEtags: false,
   experimental: {},
-  // Note: headers() and redirects() don't work with static export
-  // These would need to be configured at the hosting level (GitHub Pages, CDN, etc.)
 };
 
-export default nextConfig;
+export default withNextIntl(nextConfig);

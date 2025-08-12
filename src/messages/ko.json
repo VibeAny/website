@@ -1,0 +1,149 @@
+{
+  "common": {
+    "signIn": "로그인",
+    "getStarted": "시작하기",
+    "home": "홈",
+    "freeServers": "무료 서버",
+    "features": "기능",
+    "pricing": "가격",
+    "docs": "문서",
+    "tryNow": "지금 시도",
+    "backToHome": "홈으로 돌아가기",
+    "privacy": "개인정보",
+    "terms": "약관",
+    "support": "지원",
+    "copyright": "© 2025 Project Tesseract. 모든 권리 보유."
+  },
+  "hero": {
+    "badge": "Project Tesseract 🔷",
+    "title": "바이브 우선 MCP 플랫폼",
+    "subtitle": "한 번 구성하면 어디서나 연결. MCP 서비스 배포를 복잡한 것에서 간단한 것으로, 로컬에서 클라우드로 변환합니다. 인피니티 스톤처럼 AI 연결의 무한한 힘을 해방시킵니다.",
+    "startFreeTrial": "무료 평가판 시작",
+    "tryFreeServers": "무료 서버 시도",
+    "viewDocumentation": "문서 보기",
+    "comingSoon": "곧 출시",
+    "comingSoonSubtitle": "우리는 MCP 서비스 배포의 미래를 구축하고 있습니다. 한 번 구성하면 어디서나 연결. 복잡한 것에서 간단한 것으로, 로컬에서 클라우드로 변환.",
+    "launchBeta": "베타 경험 시작"
+  },
+  "stats": {
+    "uptime": "가동 시간 SLA",
+    "apiResponse": "API 응답",
+    "setupTime": "설정 시간",
+    "freeServers": "무료 서버",
+    "activeUsers": "활성 사용자"
+  },
+  "features": {
+    "title": "4차원 연결, 무한한 힘",
+    "subtitle": "시간, 공간, 시스템, 데이터의 차원을 넘나들며 정교한 클라우드 네이티브 MCP 서비스 생태계를 구축",
+    "oneClick": {
+      "title": "원클릭 배포",
+      "description": "5분 만에 완전한 MCP 서비스 구성 및 클라우드 배포",
+      "features": ["드래그 앤 드롭 구성 UI", "자동화된 K8s 배포", "무관리 관리"]
+    },
+    "security": {
+      "title": "엔터프라이즈 보안",
+      "description": "데이터 개인정보 보장과 함께하는 다층 보안 보호",
+      "features": ["SOC2 Type II 인증", "엔드투엔드 암호화", "RBAC 액세스 제어"]
+    },
+    "cloudNative": {
+      "title": "클라우드 네이티브 아키텍처",
+      "description": "글로벌 가속 액세스와 함께하는 탄력적 확장",
+      "features": ["멀티클라우드 배포 전략", "글로벌 CDN 가속", "자동 확장 기능"]
+    },
+    "ecosystem": {
+      "title": "풍부한 생태계",
+      "description": "주류 엔터프라이즈 서비스 통합 지원",
+      "features": ["Atlassian 스위트", "Microsoft 365", "Google Workspace"]
+    }
+  },
+  "pricing": {
+    "title": "올바른 플랜 선택",
+    "subtitle": "무료로 시작하여 필요에 따라 확장",
+    "starter": {
+      "title": "Starter",
+      "description": "개인 개발자",
+      "price": "$0",
+      "period": "/월",
+      "features": ["1개 MCP 서비스", "10K API 요청/월", "커뮤니티 지원", "기본 모니터링"],
+      "button": "무료로 시작"
+    },
+    "professional": {
+      "title": "Professional",
+      "description": "소규모 팀",
+      "price": "$29",
+      "period": "/월",
+      "features": ["5개 MCP 서비스", "100K API 요청/월", "이메일 지원", "고급 모니터링"],
+      "button": "시작하기",
+      "badge": "추천"
+    },
+    "business": {
+      "title": "Business",
+      "description": "성장하는 기업",
+      "price": "$99",
+      "period": "/월",
+      "features": ["무제한 MCP 서비스", "1M API 요청/월", "우선순위 지원", "엔터프라이즈 모니터링"],
+      "button": "영업팀 연락"
+    },
+    "enterprise": {
+      "title": "Enterprise",
+      "description": "대기업",
+      "price": "맞춤형",
+      "period": "가격",
+      "features": ["프라이빗 배포", "무제한 사용", "전용 지원", "SLA 보장"],
+      "button": "문의하기"
+    }
+  },
+  "cta": {
+    "title": "Tesseract를 활성화할 준비가 되셨나요?",
+    "subtitle": "AI 연결의 무한한 힘을 해방시키고 클라우드 네이티브 MCP 서비스 여정을 시작하세요"
+  },
+  "freeServers": {
+    "badge": "무료 및 사용 가능",
+    "title": "무료 MCP 서버",
+    "subtitle": "이러한 무료 공개 MCP 서버를 시도하여 Model Context Protocol의 강력한 기능을 경험해보세요. 개발, 테스트 및 학습에 완벽합니다.",
+    "getStarted": "지금 시작하기",
+    "status": {
+      "active": "활성",
+      "comingSoon": "출시 예정"
+    },
+    "atlassian": {
+      "title": "Atlassian MCP 서버",
+      "description": "완전한 API 액세스로 Jira, Confluence 및 기타 Atlassian 서비스에 연결",
+      "uptime": "99.9% 가동 시간",
+      "connect": "지금 연결",
+      "features": ["Jira 이슈 관리", "Confluence 페이지 액세스", "팀 협업 도구", "실시간 알림"]
+    },
+    "github": {
+      "title": "GitHub MCP 서버",
+      "description": "GitHub 저장소, 이슈, 풀 리퀘스트 및 협업 기능에 액세스",
+      "uptime": "99.9% 가동 시간",
+      "connect": "지금 연결",
+      "features": ["저장소 관리", "이슈 추적", "풀 리퀘스트 워크플로", "코드 검색 및 분석"]
+    },
+    "aws": {
+      "title": "AWS MCP 서버",
+      "description": "MCP 프로토콜을 통해 AWS 리소스 및 서비스 관리",
+      "eta": "출시 예정: 2025년 Q2",
+      "notify": "알림 받기",
+      "features": ["EC2 인스턴스 관리", "S3 버킷 작업", "CloudWatch 모니터링", "Lambda 함수"]
+    },
+    "howToConnect": {
+      "title": "연결 방법",
+      "subtitle": "무료 MCP 서버 시작은 간단합니다. 다음 단계를 따라 연결하고 사용을 시작하세요."
+    },
+    "steps": {
+      "step1": {
+        "title": "서버 선택",
+        "description": "엄선된 공개 MCP 서버 목록을 둘러보고 필요에 맞는 것을 선택하세요."
+      },
+      "step2": {
+        "title": "연결 URL 복사",
+        "description": "각 서버는 연결 URL을 제공합니다. 클립보드에 복사하기만 하면 됩니다."
+      },
+      "step3": {
+        "title": "연결 및 사용",
+        "description": "Claude 구성에 URL을 추가하고 서비스와 상호 작용을 시작하세요."
+      }
+    }
+  }
+}
