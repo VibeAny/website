@@ -4,15 +4,10 @@ import { Badge } from "@/components/ui/badge"
 import { PageLayout } from "@/components/ui/page-layout"
 import { ArrowRight, Shield, Lock, Cloud, Settings, Zap, Users } from "lucide-react"
 
-type Props = {
-  params: Promise<{ locale: string }>
-}
-
-export default async function PrivateMcpPage({ params }: Props) {
-  const { locale } = await params
+export default async function PrivateMcpPage() {
   
   return (
-    <PageLayout locale={locale} currentPath="/private-mcp">
+    <PageLayout currentPath="/private-mcp">
       {/* Hero Section */}
         <section className="container mx-auto px-4 py-16 text-center relative z-10">
           <div className="fade-in" style={{animationDelay: '0.2s'}}>

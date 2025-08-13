@@ -16,18 +16,10 @@ import {
   Clock,
   CheckCircle,
 } from "lucide-react";
-import { getTranslations } from "next-intl/server";
-
-type Props = {
-  params: Promise<{ locale: string }>;
-};
-
-export default async function RemoteMcpPage({ params }: Props) {
-  const { locale } = await params;
-  const t = await getTranslations({ locale });
+export default async function RemoteMcpPage() {
 
   return (
-    <PageLayout locale={locale} currentPath="/remote-mcp">
+    <PageLayout currentPath="/remote-mcp">
       {/* Hero Section */}
         <section className="container mx-auto px-4 py-16 text-center relative z-10">
           <div className="fade-in" style={{ animationDelay: "0.2s" }}>
@@ -88,14 +80,22 @@ export default async function RemoteMcpPage({ params }: Props) {
                       <span>99.9% Uptime</span>
                     </div>
                     <ul className="text-sm text-muted-foreground space-y-2 font-medium">
-                      {t
-                        .raw("freeServers.atlassian.features")
-                        .map((feature: string, index: number) => (
-                          <li key={index} className="flex items-center gap-2">
-                            <div className="w-1.5 h-1.5 bg-blue-500 rounded-full ui-pulse-glow" />
-                            {feature}
-                          </li>
-                        ))}
+                      <li className="flex items-center gap-2">
+                        <div className="w-1.5 h-1.5 bg-blue-500 rounded-full ui-pulse-glow" />
+                        Full Jira issue management
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <div className="w-1.5 h-1.5 bg-blue-500 rounded-full ui-pulse-glow" />
+                        Confluence page operations
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <div className="w-1.5 h-1.5 bg-blue-500 rounded-full ui-pulse-glow" />
+                        Agile board management
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <div className="w-1.5 h-1.5 bg-blue-500 rounded-full ui-pulse-glow" />
+                        Sprint planning & tracking
+                      </li>
                     </ul>
                     <div className="flex items-center gap-3 pt-4">
                       <Button size="sm" className="btn-modern flex-1">
@@ -138,31 +138,39 @@ export default async function RemoteMcpPage({ params }: Props) {
                     </Badge>
                   </div>
                   <CardTitle className="text-xl font-bold text-gradient">
-                    {t("freeServers.github.title")}
+                    GitHub MCP Server
                   </CardTitle>
                   <CardDescription className="text-base text-muted-foreground">
-                    {t("freeServers.github.description")}
+                    Full GitHub API access for repositories, issues, and workflows
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
                       <Clock className="h-4 w-4" />
-                      <span>{t("freeServers.github.uptime")}</span>
+                      <span>99.9% Uptime</span>
                     </div>
                     <ul className="text-sm text-muted-foreground space-y-2 font-medium">
-                      {t
-                        .raw("freeServers.github.features")
-                        .map((feature: string, index: number) => (
-                          <li key={index} className="flex items-center gap-2">
-                            <div className="w-1.5 h-1.5 bg-gray-700 rounded-full ui-pulse-glow" />
-                            {feature}
-                          </li>
-                        ))}
+                      <li className="flex items-center gap-2">
+                        <div className="w-1.5 h-1.5 bg-gray-700 rounded-full ui-pulse-glow" />
+                        Repository management
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <div className="w-1.5 h-1.5 bg-gray-700 rounded-full ui-pulse-glow" />
+                        Issue tracking
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <div className="w-1.5 h-1.5 bg-gray-700 rounded-full ui-pulse-glow" />
+                        Pull request operations
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <div className="w-1.5 h-1.5 bg-gray-700 rounded-full ui-pulse-glow" />
+                        GitHub Actions integration
+                      </li>
                     </ul>
                     <div className="flex items-center gap-3 pt-4">
                       <Button size="sm" className="btn-modern flex-1">
-                        {t("freeServers.github.connect")}
+                        Connect Now
                         <ArrowRight className="ml-2 h-4 w-4" />
                       </Button>
                       <Button
@@ -196,32 +204,40 @@ export default async function RemoteMcpPage({ params }: Props) {
                     <Badge className="bg-orange-50 text-orange-600 border-orange-200 px-3 py-1">
                       <div className="flex items-center gap-1">
                         <Clock className="h-3 w-3" />
-                        {t("freeServers.status.comingSoon")}
+                        Coming Soon
                       </div>
                     </Badge>
                   </div>
                   <CardTitle className="text-xl font-bold text-gradient">
-                    {t("freeServers.aws.title")}
+                    AWS MCP Server
                   </CardTitle>
                   <CardDescription className="text-base text-muted-foreground">
-                    {t("freeServers.aws.description")}
+                    Comprehensive AWS services integration for cloud infrastructure management
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
                       <Clock className="h-4 w-4" />
-                      <span>{t("freeServers.aws.eta")}</span>
+                      <span>Q2 2025</span>
                     </div>
                     <ul className="text-sm text-muted-foreground space-y-2 font-medium">
-                      {t
-                        .raw("freeServers.aws.features")
-                        .map((feature: string, index: number) => (
-                          <li key={index} className="flex items-center gap-2">
-                            <div className="w-1.5 h-1.5 bg-orange-500 rounded-full ui-pulse-glow" />
-                            {feature}
-                          </li>
-                        ))}
+                      <li className="flex items-center gap-2">
+                        <div className="w-1.5 h-1.5 bg-orange-500 rounded-full ui-pulse-glow" />
+                        EC2 instance management
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <div className="w-1.5 h-1.5 bg-orange-500 rounded-full ui-pulse-glow" />
+                        S3 bucket operations
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <div className="w-1.5 h-1.5 bg-orange-500 rounded-full ui-pulse-glow" />
+                        Lambda function deployment
+                      </li>
+                      <li className="flex items-center gap-2">
+                        <div className="w-1.5 h-1.5 bg-orange-500 rounded-full ui-pulse-glow" />
+                        CloudWatch monitoring
+                      </li>
                     </ul>
                     <div className="flex items-center gap-3 pt-4">
                       <Button
@@ -230,7 +246,7 @@ export default async function RemoteMcpPage({ params }: Props) {
                         className="white-button flex-1"
                         disabled
                       >
-                        {t("freeServers.aws.notify")}
+                        Get Notified
                       </Button>
                       <Button
                         size="sm"
@@ -256,10 +272,10 @@ export default async function RemoteMcpPage({ params }: Props) {
               style={{ animationDelay: "0.2s" }}
             >
               <h2 className="text-4xl font-black mb-6 text-gradient">
-                {t("freeServers.howToConnect.title")}
+                How to Connect
               </h2>
               <p className="text-xl text-muted-foreground font-medium max-w-3xl mx-auto">
-                {t("freeServers.howToConnect.subtitle")}
+                Get started with Remote MCP servers in just 3 simple steps
               </p>
             </div>
 
@@ -272,10 +288,10 @@ export default async function RemoteMcpPage({ params }: Props) {
                   <span className="text-3xl font-black text-primary">1</span>
                 </div>
                 <h3 className="text-xl font-bold mb-4 text-gradient">
-                  {t("freeServers.steps.step1.title")}
+                  Copy Server URL
                 </h3>
                 <p className="text-muted-foreground font-medium leading-relaxed">
-                  {t("freeServers.steps.step1.description")}
+                  Select your desired MCP server and copy the provided connection URL
                 </p>
               </div>
 
@@ -287,10 +303,10 @@ export default async function RemoteMcpPage({ params }: Props) {
                   <span className="text-3xl font-black text-primary">2</span>
                 </div>
                 <h3 className="text-xl font-bold mb-4 text-gradient">
-                  {t("freeServers.steps.step2.title")}
+                  Configure Claude
                 </h3>
                 <p className="text-muted-foreground font-medium leading-relaxed">
-                  {t("freeServers.steps.step2.description")}
+                  Add the URL to your Claude Desktop app configuration file
                 </p>
               </div>
 
@@ -302,10 +318,10 @@ export default async function RemoteMcpPage({ params }: Props) {
                   <span className="text-3xl font-black text-primary">3</span>
                 </div>
                 <h3 className="text-xl font-bold mb-4 text-gradient">
-                  {t("freeServers.steps.step3.title")}
+                  Start Using
                 </h3>
                 <p className="text-muted-foreground font-medium leading-relaxed">
-                  {t("freeServers.steps.step3.description")}
+                  Restart Claude and start using the MCP server features in your conversations
                 </p>
               </div>
             </div>
@@ -318,7 +334,7 @@ export default async function RemoteMcpPage({ params }: Props) {
                 size="lg"
                 className="btn-modern px-10 py-4 text-lg font-semibold"
               >
-                {t("freeServers.getStarted")}
+                Get Started Now
                 <ArrowRight className="ml-3 h-5 w-5" />
               </Button>
             </div>

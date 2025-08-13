@@ -5,8 +5,7 @@ import { getMcpStatistics, getMcpServers, getMcpCategories } from '@/lib/mcp-dat
 import { McpBrowser } from '@/components/mcp-browser'
 import { Metadata } from 'next'
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { locale } = await params
+export async function generateMetadata(): Promise<Metadata> {
   const stats = getMcpStatistics()
   
   const title = "MCP Hub - Discover 865+ Model Context Protocol Servers | VibeMCP"
@@ -32,8 +31,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title,
       description,
       type: 'website',
-      locale: locale === 'zh' ? 'zh_CN' : 'en_US',
-      url: `https://vibemcp.net/${locale}/mcp-hub`,
+      locale: 'en_US',
+      url: 'https://vibemcp.net/mcp-hub',
       siteName: 'VibeMCP',
       images: [
         {
@@ -51,11 +50,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       images: ['https://vibemcp.net/og-mcp-hub.png']
     },
     alternates: {
-      canonical: `https://vibemcp.net/${locale}/mcp-hub`,
-      languages: {
-        'en': 'https://vibemcp.net/en/mcp-hub',
-        'zh': 'https://vibemcp.net/zh/mcp-hub'
-      }
+      canonical: 'https://vibemcp.net/mcp-hub'
     },
     robots: {
       index: true,
@@ -70,12 +65,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-type Props = {
-  params: Promise<{ locale: string }>
-}
-
-export default async function McpHubPage({ params }: Props) {
-  const { locale } = await params
+export default async function McpHubPage() {
   
   // Load real MCP data
   const stats = getMcpStatistics()
@@ -83,7 +73,7 @@ export default async function McpHubPage({ params }: Props) {
   const categories = getMcpCategories()
   
   return (
-    <PageLayout locale={locale} currentPath="/mcp-hub">
+    <PageLayout currentPath="/mcp-hub">
       {/* JSON-LD Structured Data */}
       <script
         type="application/ld+json"
@@ -93,7 +83,7 @@ export default async function McpHubPage({ params }: Props) {
             "@type": "WebPage",
             "name": "MCP Hub - Model Context Protocol Servers Database",
             "description": `Comprehensive database of ${stats.totalServers}+ Model Context Protocol servers`,
-            "url": `https://vibemcp.net/${locale}/mcp-hub`,
+            "url": "https://vibemcp.net/mcp-hub",
             "mainEntity": {
               "@type": "Dataset",
               "name": "MCP Servers Database", 
@@ -117,13 +107,13 @@ export default async function McpHubPage({ params }: Props) {
                   "@type": "ListItem",
                   "position": 1,
                   "name": "Home",
-                  "item": `https://vibemcp.net/${locale}`
+                  "item": "https://vibemcp.net"
                 },
                 {
                   "@type": "ListItem", 
                   "position": 2,
                   "name": "MCP Hub",
-                  "item": `https://vibemcp.net/${locale}/mcp-hub`
+                  "item": "https://vibemcp.net/mcp-hub"
                 }
               ]
             }

@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 
 interface NavigationProps {
-  locale: string
   currentPath?: string
 }
 
@@ -12,10 +11,9 @@ interface NavItemProps {
   href: string
   children: React.ReactNode
   isActive?: boolean
-  locale: string
 }
 
-const NavItem = ({ href, children, isActive = false }: Omit<NavItemProps, 'locale'>) => (
+const NavItem = ({ href, children, isActive = false }: NavItemProps) => (
   <Link
     href={href}
     className={`transition-all duration-300 hover-glow px-3 py-1 rounded-lg ${
@@ -28,7 +26,7 @@ const NavItem = ({ href, children, isActive = false }: Omit<NavItemProps, 'local
   </Link>
 )
 
-export function Navigation({ locale, currentPath = '' }: NavigationProps) {
+export function Navigation({ currentPath = '' }: NavigationProps) {
   const [isScrolled, setIsScrolled] = useState(false)
   
   // Determine active page based on current path
@@ -65,7 +63,7 @@ export function Navigation({ locale, currentPath = '' }: NavigationProps) {
         aria-label="Main navigation"
       >
         {/* Logo */}
-        <Link href={`/${locale}`} className="flex items-center">
+        <Link href="/" className="flex items-center">
           <div className="text-2xl font-black relative">
             <span className="bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent hover:from-purple-700 hover:to-blue-700 transition-all duration-300">VibeMCP</span>
             <sup className="text-xs font-semibold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent absolute top-1 ml-0.5">™</sup>
@@ -75,14 +73,14 @@ export function Navigation({ locale, currentPath = '' }: NavigationProps) {
         {/* Navigation Links */}
         <div className="flex items-center space-x-6">
           <NavItem 
-            href={`/${locale}/mcp-hub`} 
+            href="/mcp-hub" 
             isActive={isActive('/mcp-hub')}
           >
             MCP Hub
           </NavItem>
           
           <NavItem 
-            href={`/${locale}/remote-mcp`} 
+            href="/remote-mcp" 
             isActive={isActive('/remote-mcp')}
           >
             Remote MCP
