@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useTranslation } from 'next-i18next'
-import { LanguageSelector } from './language-selector'
+// import { LanguageSelector } from './language-selector'
 import { ThemeToggle } from './theme-toggle'
 
 interface NavigationProps {
@@ -90,7 +90,7 @@ export function Navigation({ currentPath = '' }: NavigationProps) {
           
           <div className="flex items-center space-x-2">
             <ThemeToggle />
-            <LanguageSelector />
+            {/* <LanguageSelector /> */}
           </div>
         </div>
       </nav>

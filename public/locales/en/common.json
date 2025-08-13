@@ -45,10 +45,10 @@
   },
   "remoteMcp": {
     "title": "Remote MCP Services - Hosted Model Context Protocol Servers",
-    "description": "Connect to our hosted MCP servers instantly. No setup required - access Atlassian, GitHub, and AWS integrations for Claude AI. 99.9% uptime guaranteed.",
+    "description": "Connect to public remote MCP servers instantly. No setup required - access third-party GitHub, Atlassian, and other integrations for AI applications. Browse curated directory of reliable services.",
     "badge": "Live & Available",
     "heading": "Remote MCP Services",
-    "subtitle": "Connect to our hosted MCP servers instantly. No setup required - just copy the URL and start using powerful integrations in your Claude conversations.",
+    "subtitle": "Connect to public remote MCP servers instantly. No setup required - just copy the URL and start using powerful integrations in your AI conversations.",
     "servers": {
       "atlassian": {
         "title": "Atlassian MCP Server",

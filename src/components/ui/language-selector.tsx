@@ -1,8 +1,6 @@
 'use client'
 
 import * as React from 'react'
-import Link from 'next/link'
-import { useRouter } from 'next/router'
 import { Check, Languages } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import {
@@ -11,7 +9,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
-import languageDetector from '@/lib/languageDetector'
+import { useTranslation } from 'next-i18next'
 
 const languages = [
   { code: 'en', name: 'English' },
@@ -22,8 +20,11 @@ const languages = [
 ]
 
 export function LanguageSelector() {
-  const router = useRouter()
-  const { locale, asPath } = router
+  const { i18n } = useTranslation()
+
+  const handleLanguageChange = (langCode: string) => {
+    i18n.changeLanguage(langCode)
+  }
   
   return (
     <DropdownMenu>
@@ -34,22 +35,15 @@ export function LanguageSelector() {
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="white-card border-0 shadow-lg">
         {languages.map((language) => (
-          <DropdownMenuItem key={language.code} asChild>
-            <Link
-              href={asPath}
-              onClick={() => {
-                if (languageDetector.cache) {
-                  languageDetector.cache(language.code)
-                }
-              }}
-              locale={language.code}
-              className="flex items-center justify-between w-full px-3 py-2 cursor-pointer hover:bg-muted/50 rounded-lg transition-colors"
-            >
-              <span className="font-medium">{language.name}</span>
-              {locale === language.code && (
-                <Check className="h-4 w-4 text-primary" />
-              )}
-            </Link>
+          <DropdownMenuItem 
+            key={language.code}
+            onClick={() => handleLanguageChange(language.code)}
+            className="flex items-center justify-between w-full px-3 py-2 cursor-pointer hover:bg-muted/50 rounded-lg transition-colors"
+          >
+            <span className="font-medium">{language.name}</span>
+            {i18n.language === language.code && (
+              <Check className="h-4 w-4 text-primary" />
+            )}
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>

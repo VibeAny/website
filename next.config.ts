@@ -2,13 +2,14 @@ import type { NextConfig } from "next";
 const { i18n } = require('./next-i18next.config');
 
 const nextConfig: NextConfig = {
-  i18n,
+  // 开发环境使用 i18n，生产环境使用静态导出
+  ...(process.env.NODE_ENV === 'development' ? { i18n } : {}),
   trailingSlash: true,
   images: {
     unoptimized: true,
   },
-  // For static export, we need to use next-language-detector
-  // See: https://locize.com/blog/next-i18n-static/
+  // 只在生产环境使用静态导出
+  ...(process.env.NODE_ENV === 'production' ? { output: 'export' } : {}),
 };
 
 export default nextConfig;
