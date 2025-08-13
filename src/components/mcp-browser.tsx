@@ -129,7 +129,7 @@ export function McpBrowser({ servers, categories }: McpBrowserProps) {
       {/* Results summary */}
       {displayedServers.length > 0 && (
         <div className="text-center text-sm text-muted-foreground py-6">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/50 backdrop-blur-sm border border-gray-200">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full white-card">
             <span>📊</span>
             <span>Showing {displayedServers.length} of {filteredServers.length} servers</span>
           </div>

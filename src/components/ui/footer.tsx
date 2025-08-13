@@ -1,8 +1,8 @@
-'use client'
-
 import Link from 'next/link'
+import { useTranslation } from 'next-i18next'
 
 export function Footer() {
+  const { t } = useTranslation('common')
 
   return (
     <footer className="white-card border-t-0 relative z-10">
@@ -20,7 +20,7 @@ export function Footer() {
                 <sup className="text-xs font-semibold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent absolute top-1 ml-0.5">™</sup>
               </div>
               <div className="text-sm text-muted-foreground font-medium">
-                © 2025 VibeMCP™. All rights reserved.
+                {t('common.copyright')}
               </div>
             </div>
           </Link>
@@ -30,9 +30,9 @@ export function Footer() {
             className="fade-in flex items-center space-x-8 text-sm text-muted-foreground font-medium"
             style={{ animationDelay: "0.4s" }}
           >
-            <FooterLink href="#" label="Privacy" />
-            <FooterLink href="#" label="Terms" />
-            <FooterLink href="#" label="Support" />
+            <FooterLink href="#" label={t('common.privacy')} />
+            <FooterLink href="#" label={t('common.terms')} />
+            <FooterLink href="#" label={t('common.support')} />
           </div>
         </div>
       </div>

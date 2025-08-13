@@ -1,0 +1,162 @@
+{
+  "common": {
+    "copyright": "© 2025 VibeMCP™. 保留所有权利。",
+    "privacy": "隐私政策",
+    "terms": "服务条款",
+    "support": "技术支持",
+    "loading": "加载中...",
+    "viewRepository": "查看仓库"
+  },
+  "navigation": {
+    "mcpHub": "MCP 中心",
+    "remoteMcp": "远程 MCP",
+    "privateMcp": "私有 MCP"
+  },
+  "home": {
+    "title": "VibeMCP.net - 体验优先的 MCP 平台",
+    "description": "发现、部署和管理模型上下文协议服务器，提供企业级解决方案。"
+  },
+  "mcpHub": {
+    "title": "MCP 中心 - 发现 865+ 模型上下文协议服务器",
+    "description": "探索我们来自 GitHub 的 {{count}}+ 模型上下文协议 (MCP) 服务器综合数据库。为 AI 应用查找、筛选和连接 MCP 服务器。按类别、语言和热度浏览。",
+    "badge": "MCP 服务器数据库",
+    "heading": "发现所有 MCP 服务器",
+    "subtitle": "探索我们来自 GitHub 的 {{count}}+ MCP 服务器综合数据库。为您的 AI 应用和工作流程查找、筛选并连接完美的 MCP 服务器。",
+    "searchPlaceholder": "搜索 MCP 服务器...",
+    "allCategories": "所有分类",
+    "allLanguages": "所有语言",
+    "filters": {
+      "official": "官方",
+      "popular": "热门",
+      "recentlyUpdated": "最近更新"
+    },
+    "stats": {
+      "showing": "显示",
+      "of": "/",
+      "servers": "个服务器",
+      "for": "搜索",
+      "activeServers": "{{count}} 个活跃服务器",
+      "categories": "{{count}} 个分类",
+      "languages": "{{count}} 种语言",
+      "lastUpdate": "最后更新"
+    },
+    "loadMore": "向下滚动自动加载更多服务器",
+    "clearFilters": "清除所有筛选"
+  },
+  "remoteMcp": {
+    "title": "远程 MCP 服务 - 托管的模型上下文协议服务器",
+    "description": "即时连接我们的托管 MCP 服务器。无需设置 - 为 Claude AI 访问 Atlassian、GitHub 和 AWS 集成。保证 99.9% 正常运行时间。",
+    "badge": "在线可用",
+    "heading": "远程 MCP 服务",
+    "subtitle": "即时连接我们的托管 MCP 服务器。无需设置 - 只需复制 URL 即可在您的 Claude 对话中开始使用强大的集成功能。",
+    "servers": {
+      "atlassian": {
+        "title": "Atlassian MCP 服务器",
+        "description": "通过完整的 API 访问连接到 Jira、Confluence 和其他 Atlassian 服务",
+        "uptime": "99.9% 正常运行时间",
+        "features": [
+          "完整的 Jira 问题管理",
+          "Confluence 页面操作",
+          "敏捷看板管理",
+          "Sprint 规划和跟踪"
+        ]
+      },
+      "github": {
+        "title": "GitHub MCP 服务器",
+        "description": "为仓库、问题和工作流程提供完整的 GitHub API 访问",
+        "uptime": "99.9% 正常运行时间",
+        "connect": "立即连接",
+        "features": [
+          "仓库管理",
+          "问题跟踪",
+          "拉取请求操作",
+          "GitHub Actions 集成"
+        ]
+      },
+      "aws": {
+        "title": "AWS MCP 服务器",
+        "description": "用于云基础设施管理的综合 AWS 服务集成",
+        "eta": "2025年第二季度",
+        "notify": "获取通知",
+        "features": [
+          "EC2 实例管理",
+          "S3 存储桶操作",
+          "Lambda 函数部署",
+          "CloudWatch 监控"
+        ]
+      }
+    },
+    "status": {
+      "active": "活跃",
+      "comingSoon": "即将推出"
+    },
+    "howToConnect": {
+      "title": "如何连接",
+      "subtitle": "仅需 3 个简单步骤即可开始使用远程 MCP 服务器"
+    },
+    "steps": {
+      "step1": {
+        "title": "复制服务器 URL",
+        "description": "选择您所需的 MCP 服务器并复制提供的连接 URL"
+      },
+      "step2": {
+        "title": "配置 Claude",
+        "description": "将 URL 添加到您的 Claude Desktop 应用配置文件中"
+      },
+      "step3": {
+        "title": "开始使用",
+        "description": "重启 Claude 并在您的对话中开始使用 MCP 服务器功能"
+      }
+    },
+    "getStarted": "立即开始"
+  },
+  "privateMcp": {
+    "title": "私有 MCP 服务 - 企业级模型上下文协议解决方案",
+    "description": "部署具有企业级安全性的私有 MCP 服务器。完全控制、自定义配置，并与您现有的基础设施无缝集成。2025年第二季度推出。",
+    "badge": "企业安全",
+    "heading": "私有 MCP 服务",
+    "subtitle": "部署和管理您自己的私有 MCP 服务器，具备企业级安全性、完全控制权，并与您现有的基础设施无缝集成。",
+    "comingSoon": "2025年第二季度推出",
+    "comingSoonSubtitle": "我们正在为需要完全控制其 AI 基础设施的企业构建终极私有 MCP 平台。",
+    "features": {
+      "privateDeployment": {
+        "title": "私有部署",
+        "description": "在您自己的云或本地基础设施中部署 MCP 服务器，拥有完整的数据主权和安全控制。"
+      },
+      "customConfiguration": {
+        "title": "自定义配置",
+        "description": "配置 MCP 服务器，使其与您现有的系统、API 和企业应用程序无缝集成。"
+      },
+      "teamManagement": {
+        "title": "团队管理",
+        "description": "高级用户管理、基于角色的访问控制和详细的审计日志，满足企业合规要求。"
+      }
+    },
+    "architecture": {
+      "title": "混合云架构",
+      "description": "跨多个云提供商或本地部署",
+      "features": [
+        "多云部署选项",
+        "本地安装支持",
+        "Kubernetes 原生架构",
+        "自动扩展和负载均衡"
+      ]
+    },
+    "enterprise": {
+      "title": "企业功能",
+      "description": "面向企业部署的高级功能",
+      "features": [
+        "单点登录 (SSO) 集成",
+        "高级监控和告警",
+        "合规报告 (SOX, GDPR)",
+        "24/7 专属支持"
+      ]
+    },
+    "earlyAccess": {
+      "title": "成为首批用户",
+      "description": "加入我们的早期访问计划，独家预览私有 MCP 功能，并享受早期采用者的特殊价格。",
+      "joinEarlyAccess": "加入早期访问",
+      "scheduleDemo": "预约演示"
+    }
+  }
+}

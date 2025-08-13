@@ -106,14 +106,14 @@ export function McpSearchFilter({ servers, categories, onFilteredServers }: McpS
   }
 
   return (
-    <div className="bg-white/90 backdrop-blur-xl rounded-3xl p-8 mb-12 shadow-xl shadow-purple-500/5 border border-white/20">
+    <div className="white-card rounded-3xl p-8 mb-12">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
         {/* Search Bar */}
         <div className="md:col-span-2">
           <div className="relative">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-500 z-10 pointer-events-none" />
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground z-10 pointer-events-none" />
             <input
-              className="w-full pl-12 pr-4 py-3.5 rounded-2xl border-2 border-gray-100 bg-white/70 backdrop-blur-sm focus:border-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-200/50 transition-all placeholder-gray-500 font-medium relative z-0"
+              className="w-full pl-12 pr-4 py-3.5 rounded-2xl border-2 border-border bg-background/70 backdrop-blur-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all placeholder-muted-foreground font-medium relative z-0"
               placeholder="Search MCP servers..."
               type="text"
               value={searchQuery}
@@ -126,7 +126,7 @@ export function McpSearchFilter({ servers, categories, onFilteredServers }: McpS
         <div>
           <div className="relative">
             <select 
-              className="w-full pl-4 pr-10 py-3.5 rounded-2xl border-2 border-gray-100 bg-white/70 backdrop-blur-sm focus:border-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-200/50 transition-all font-medium text-gray-700 appearance-none cursor-pointer"
+              className="w-full pl-4 pr-10 py-3.5 rounded-2xl border-2 border-border bg-background/70 backdrop-blur-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all font-medium text-foreground appearance-none cursor-pointer"
               value={selectedCategory}
               onChange={handleCategoryChange}
             >
@@ -137,7 +137,7 @@ export function McpSearchFilter({ servers, categories, onFilteredServers }: McpS
                 </option>
               ))}
             </select>
-            <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-500 pointer-events-none" />
+            <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
           </div>
         </div>
         
@@ -145,7 +145,7 @@ export function McpSearchFilter({ servers, categories, onFilteredServers }: McpS
         <div>
           <div className="relative">
             <select 
-              className="w-full pl-4 pr-10 py-3.5 rounded-2xl border-2 border-gray-100 bg-white/70 backdrop-blur-sm focus:border-purple-300 focus:outline-none focus:ring-2 focus:ring-purple-200/50 transition-all font-medium text-gray-700 appearance-none cursor-pointer"
+              className="w-full pl-4 pr-10 py-3.5 rounded-2xl border-2 border-border bg-background/70 backdrop-blur-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all font-medium text-foreground appearance-none cursor-pointer"
               value={selectedLanguage}
               onChange={handleLanguageChange}
             >
@@ -165,14 +165,14 @@ export function McpSearchFilter({ servers, categories, onFilteredServers }: McpS
         </div>
       </div>
       
-      {/* Quick Filter Tags - Enhanced */}
+      {/* Quick Filter Tags - Unified with card style */}
       <div className="flex flex-wrap gap-3 mt-8">
         <Badge 
           variant="secondary" 
-          className={`px-4 py-2 cursor-pointer transition-all duration-300 flex items-center gap-2 text-sm font-medium rounded-xl border-2 ${
+          className={`px-4 py-2 cursor-pointer transition-all duration-300 flex items-center gap-2 text-sm font-medium rounded-xl border white-card ${
             showOfficial 
-              ? 'bg-gradient-to-r from-amber-50 to-yellow-50 text-amber-700 border-amber-200 shadow-md' 
-              : 'bg-white/60 text-gray-600 border-gray-200 hover:bg-amber-50/50 hover:text-amber-600 hover:border-amber-200'
+              ? 'bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 border-amber-200 dark:border-amber-700/50 shadow-sm' 
+              : 'hover:bg-amber-50 dark:hover:bg-amber-900/20 hover:text-amber-600 dark:hover:text-amber-400'
           }`}
           onClick={() => toggleQuickFilter('official')}
         >
@@ -181,10 +181,10 @@ export function McpSearchFilter({ servers, categories, onFilteredServers }: McpS
         </Badge>
         <Badge 
           variant="secondary" 
-          className={`px-4 py-2 cursor-pointer transition-all duration-300 flex items-center gap-2 text-sm font-medium rounded-xl border-2 ${
+          className={`px-4 py-2 cursor-pointer transition-all duration-300 flex items-center gap-2 text-sm font-medium rounded-xl border white-card ${
             showPopular 
-              ? 'bg-gradient-to-r from-orange-50 to-red-50 text-red-700 border-red-200 shadow-md' 
-              : 'bg-white/60 text-gray-600 border-gray-200 hover:bg-orange-50/50 hover:text-red-600 hover:border-red-200'
+              ? 'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 border-red-200 dark:border-red-700/50 shadow-sm' 
+              : 'hover:bg-red-50 dark:hover:bg-red-900/20 hover:text-red-600 dark:hover:text-red-400'
           }`}
           onClick={() => toggleQuickFilter('popular')}
         >
@@ -193,10 +193,10 @@ export function McpSearchFilter({ servers, categories, onFilteredServers }: McpS
         </Badge>
         <Badge 
           variant="secondary" 
-          className={`px-4 py-2 cursor-pointer transition-all duration-300 flex items-center gap-2 text-sm font-medium rounded-xl border-2 ${
+          className={`px-4 py-2 cursor-pointer transition-all duration-300 flex items-center gap-2 text-sm font-medium rounded-xl border white-card ${
             showRecent 
-              ? 'bg-gradient-to-r from-green-50 to-emerald-50 text-green-700 border-green-200 shadow-md' 
-              : 'bg-white/60 text-gray-600 border-gray-200 hover:bg-green-50/50 hover:text-green-600 hover:border-green-200'
+              ? 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 border-green-200 dark:border-green-700/50 shadow-sm' 
+              : 'hover:bg-green-50 dark:hover:bg-green-900/20 hover:text-green-600 dark:hover:text-green-400'
           }`}
           onClick={() => toggleQuickFilter('recent')}
         >

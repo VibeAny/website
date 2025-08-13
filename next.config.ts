@@ -1,8 +1,8 @@
 import type { NextConfig } from "next";
+const { i18n } = require('./next-i18next.config');
 
 const nextConfig: NextConfig = {
-  // Enable static export for GitHub Pages
-  output: 'export',
+  i18n,
   trailingSlash: true,
   images: {
     unoptimized: true,

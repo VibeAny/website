@@ -1,0 +1,380 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Line clamp utilities */
+.line-clamp-1 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.line-clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.line-clamp-3 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+/* Modern Color Palette & Variables */
+:root {
+  /* Enhanced color system for modern design */
+  --background: 0 0% 100%;
+  --foreground: 214 13% 14%; /* rgb(31, 35, 40) converted to HSL */
+  --card: 0 0% 100%;
+  --card-foreground: 214 13% 14%; /* rgb(31, 35, 40) converted to HSL */
+  --popover: 0 0% 100%;
+  --popover-foreground: 214 13% 14%; /* rgb(31, 35, 40) converted to HSL */
+  --primary: 228 94% 67%;  /* Modern blue */
+  --primary-foreground: 0 0% 100%;
+  --secondary: 310 100% 76%; /* Vibrant purple accent */
+  --secondary-foreground: 0 0% 100%;
+  --muted: 210 40% 96%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+  --accent: 142 84% 55%; /* Green accent */
+  --accent-foreground: 214 13% 14%; /* rgb(31, 35, 40) converted to HSL */
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  --ring: 228 94% 67%;
+  --radius: 1rem; /* Increased for modern look */
+  
+  /* Custom gradient and glass variables */
+  --glass-bg: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.18);
+  --shadow-glass: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+  --shadow-neumorphism-light: 9px 9px 16px #d1d9e6, -9px -9px 16px #ffffff;
+  --shadow-neumorphism-inset: inset 6px 6px 10px #d1d9e6, inset -6px -6px 10px #ffffff;
+}
+
+.dark {
+  --background: 220 26% 8%;  /* 深蓝灰背景 #131720 */
+  --foreground: 210 20% 88%; /* 浅蓝白文字 #d8dceb */
+  --card: 220 20% 12%;       /* 深蓝卡片背景 #1b1f2b */
+  --card-foreground: 210 20% 88%;
+  --popover: 220 20% 12%;
+  --popover-foreground: 210 20% 88%;
+  --primary: 217 91% 60%;    /* 明亮蓝色 #3b82f6 */
+  --primary-foreground: 220 26% 8%;
+  --secondary: 217 32% 17%;  /* 深蓝二级色 #1e293b */
+  --secondary-foreground: 210 20% 88%;
+  --muted: 220 16% 15%;      /* 静音色 #242831 */
+  --muted-foreground: 215 16% 65%; /* 静音文字 #8b95a8 */
+  --accent: 217 50% 25%;     /* 强调色 #2d3748 */
+  --accent-foreground: 210 20% 88%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 210 20% 88%;
+  --border: 220 13% 18%;     /* 边框色 #2a2f3a */
+  --input: 220 13% 18%;
+  --ring: 217 91% 60%;
+  
+  /* Dark mode glass effects */
+  --glass-bg: rgba(27, 31, 43, 0.6);
+  --glass-border: rgba(75, 85, 99, 0.2);
+  --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
+  --shadow-neumorphism-light: 9px 9px 16px #0f1114, -9px -9px 16px #1f252f;
+  --shadow-neumorphism-inset: inset 6px 6px 10px #0f1114, inset -6px -6px 10px #1f252f;
+}
+
+/* Base styles with modern enhancements */
+* {
+  border-color: hsl(var(--border));
+  scroll-behavior: smooth;
+}
+
+body {
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+  overflow-x: hidden;
+}
+
+/* Removed animated gradient - keeping simple solid backgrounds */
+
+/* Glassmorphism Effects */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-glass);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 
+    0 4px 16px 0 rgba(31, 38, 135, 0.1),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.2);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Removed glass-card hover effects */
+
+/* Dark mode glass card overrides */
+.dark .glass-card {
+  background: rgba(16, 16, 16, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 
+    0 4px 16px 0 rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Removed dark glass-card hover effects */
+
+/* Simplified white card style - no shadows for minimal look */
+.white-card {
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  transition: all 0.2s ease;
+}
+
+.white-card:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Simplified dark mode white card */
+.dark .white-card {
+  background: rgba(27, 31, 43, 0.8);  /* 使用与dark主题一致的深蓝色 */
+  border: 1px solid rgba(75, 85, 99, 0.3);
+  color: hsl(var(--foreground));
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.dark .white-card:hover {
+  transform: translateY(-2px);
+  background: rgba(27, 31, 43, 0.95);
+  border: 1px solid rgba(59, 130, 246, 0.3); /* 悬停时使用primary蓝色边框 */
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(59, 130, 246, 0.1); /* 添加蓝色光晕 */
+}
+
+/* Input and form elements */
+.dark input {
+  background: rgba(36, 40, 49, 0.8); /* 使用新的muted色 */
+  border: 1px solid rgba(75, 85, 99, 0.3);
+  color: hsl(var(--foreground));
+}
+
+.dark input::placeholder {
+  color: hsl(var(--muted-foreground));
+}
+
+/* Select elements */
+.dark select {
+  background: rgba(36, 40, 49, 0.8);
+  border: 1px solid rgba(75, 85, 99, 0.3);
+  color: hsl(var(--foreground));
+}
+
+/* Badge elements */
+.dark .bg-orange-50 {
+  background: rgba(251, 146, 60, 0.2) !important;
+}
+
+.dark .text-orange-600 {
+  color: rgb(251, 146, 60) !important;
+}
+
+.dark .border-orange-200 {
+  border-color: rgba(251, 146, 60, 0.3) !important;
+}
+
+.dark .bg-green-50 {
+  background: rgba(34, 197, 94, 0.2) !important;
+}
+
+.dark .text-green-600 {
+  color: rgb(34, 197, 94) !important;
+}
+
+.dark .border-green-200 {
+  border-color: rgba(34, 197, 94, 0.3) !important;
+}
+
+/* Text color improvements */
+.dark .text-muted-foreground {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.dark .text-gray-600 {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.dark .text-gray-500 {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+/* Removed dark white-card hover effects */
+
+/* Simplified navigation */
+.white-nav {
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  transition: all 0.2s ease;
+}
+
+/* Dark mode navigation */
+.dark .white-nav {
+  background: rgba(27, 31, 43, 0.9);
+  border: 1px solid rgba(75, 85, 99, 0.3);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* Simplified fixed navigation */
+.fixed-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.1);
+}
+
+.dark .fixed-nav {
+  background: rgba(19, 23, 32, 0.95); /* 使用新的深蓝色 */
+  border-bottom: 1px solid rgba(75, 85, 99, 0.2);
+  box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.5);
+}
+
+/* Add padding to body when nav is fixed */
+.body-with-fixed-nav {
+  padding-top: 88px;
+}
+
+/* Removed white-nav hover effects */
+
+.white-button {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 
+    0 2px 8px 0 rgba(0, 0, 0, 0.04),
+    0 1px 3px 0 rgba(0, 0, 0, 0.03);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.white-button:hover {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+  box-shadow: 
+    0 4px 12px 0 rgba(0, 0, 0, 0.08),
+    0 2px 4px 0 rgba(0, 0, 0, 0.06);
+}
+
+/* Dark mode overrides */
+.dark .white-button {
+  background: rgba(36, 40, 49, 0.8); /* 使用新的muted色 */
+  border: 1px solid rgba(75, 85, 99, 0.3);
+  color: hsl(var(--foreground));
+}
+
+.dark .white-button:hover {
+  background: rgba(45, 55, 72, 0.9); /* 使用accent色的变化 */
+  border-color: rgba(59, 130, 246, 0.4); /* 悬停时蓝色边框 */
+}
+
+/* Simplified neumorphism without shadows */
+.neumorphism {
+  background: hsl(var(--background));
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  transition: all 0.2s ease;
+}
+
+.dark .neumorphism {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.neumorphism-inset {
+  background: hsl(var(--background));
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.dark .neumorphism-inset {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Simplified modern button styles */
+.btn-modern {
+  position: relative;
+  background: linear-gradient(135deg, 
+    hsl(var(--primary)), 
+    hsl(var(--secondary))
+  );
+  border: none;
+  color: white;
+  transition: all 0.2s ease;
+}
+
+.btn-modern:hover {
+  opacity: 0.9;
+}
+
+/* Gradient text */
+.text-gradient {
+  background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* Minimal fade-in animation */
+.fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { 
+    opacity: 0; 
+    transform: translateY(10px);
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0);
+  }
+}
+
+/* Clean focus states */
+*:focus {
+  outline: 2px solid hsl(var(--primary));
+  outline-offset: 2px;
+}
+
+/* Simple selection styling */
+::selection {
+  background: hsl(var(--primary) / 0.2);
+  color: hsl(var(--foreground));
+}
+
+::-moz-selection {
+  background: hsl(var(--primary) / 0.2);
+  color: hsl(var(--foreground));
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}

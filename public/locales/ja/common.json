@@ -1,0 +1,162 @@
+{
+  "common": {
+    "copyright": "© 2025 VibeMCP™. 全ての権利を保持します。",
+    "privacy": "プライバシー",
+    "terms": "利用規約",
+    "support": "サポート",
+    "loading": "読み込み中...",
+    "viewRepository": "リポジトリを表示"
+  },
+  "navigation": {
+    "mcpHub": "MCP ハブ",
+    "remoteMcp": "リモート MCP",
+    "privateMcp": "プライベート MCP"
+  },
+  "home": {
+    "title": "VibeMCP.net - 体験ファーストの MCP プラットフォーム",
+    "description": "エンタープライズグレードのソリューションでモデルコンテキストプロトコルサーバーを発見、デプロイ、管理。"
+  },
+  "mcpHub": {
+    "title": "MCP ハブ - 865+ のモデルコンテキストプロトコルサーバーを発見",
+    "description": "GitHub から {{count}}+ のモデルコンテキストプロトコル (MCP) サーバーの包括的なデータベースを探索。AI アプリケーション用の MCP サーバーを検索、フィルタリング、接続。カテゴリ、言語、人気度で閲覧。",
+    "badge": "MCP サーバーデータベース",
+    "heading": "すべての MCP サーバーを発見",
+    "subtitle": "GitHub からの {{count}}+ MCP サーバーの包括的なデータベースを探索。AI アプリケーションとワークフローに最適な MCP サーバーを検索、フィルタリング、接続。",
+    "searchPlaceholder": "MCP サーバーを検索...",
+    "allCategories": "すべてのカテゴリ",
+    "allLanguages": "すべての言語",
+    "filters": {
+      "official": "公式",
+      "popular": "人気",
+      "recentlyUpdated": "最近更新"
+    },
+    "stats": {
+      "showing": "表示中",
+      "of": "/",
+      "servers": "サーバー",
+      "for": "検索",
+      "activeServers": "{{count}} アクティブサーバー",
+      "categories": "{{count}} カテゴリ",
+      "languages": "{{count}} 言語",
+      "lastUpdate": "最終更新"
+    },
+    "loadMore": "下にスクロールして自動的にサーバーを読み込む",
+    "clearFilters": "すべてのフィルターをクリア"
+  },
+  "remoteMcp": {
+    "title": "リモート MCP サービス - ホストされたモデルコンテキストプロトコルサーバー",
+    "description": "ホストされた MCP サーバーに即座に接続。セットアップ不要 - Claude AI 用の Atlassian、GitHub、AWS 統合にアクセス。99.9% のアップタイムを保証。",
+    "badge": "ライブ＆利用可能",
+    "heading": "リモート MCP サービス",
+    "subtitle": "ホストされた MCP サーバーに即座に接続。セットアップ不要 - URL をコピーして Claude 会話で強力な統合の使用を開始。",
+    "servers": {
+      "atlassian": {
+        "title": "Atlassian MCP サーバー",
+        "description": "完全な API アクセスで Jira、Confluence、その他の Atlassian サービスに接続",
+        "uptime": "99.9% アップタイム",
+        "features": [
+          "完全な Jira 課題管理",
+          "Confluence ページ操作",
+          "アジャイルボード管理",
+          "スプリント計画と追跡"
+        ]
+      },
+      "github": {
+        "title": "GitHub MCP サーバー",
+        "description": "リポジトリ、課題、ワークフロー用の完全な GitHub API アクセス",
+        "uptime": "99.9% アップタイム",
+        "connect": "今すぐ接続",
+        "features": [
+          "リポジトリ管理",
+          "課題追跡",
+          "プルリクエスト操作",
+          "GitHub Actions 統合"
+        ]
+      },
+      "aws": {
+        "title": "AWS MCP サーバー",
+        "description": "クラウドインフラ管理用の包括的な AWS サービス統合",
+        "eta": "2025年第2四半期",
+        "notify": "通知を受け取る",
+        "features": [
+          "EC2 インスタンス管理",
+          "S3 バケット操作",
+          "Lambda 関数デプロイ",
+          "CloudWatch 監視"
+        ]
+      }
+    },
+    "status": {
+      "active": "アクティブ",
+      "comingSoon": "近日公開"
+    },
+    "howToConnect": {
+      "title": "接続方法",
+      "subtitle": "わずか 3 つの簡単なステップでリモート MCP サーバーを開始"
+    },
+    "steps": {
+      "step1": {
+        "title": "サーバー URL をコピー",
+        "description": "希望する MCP サーバーを選択し、提供された接続 URL をコピー"
+      },
+      "step2": {
+        "title": "Claude を設定",
+        "description": "Claude Desktop アプリの設定ファイルに URL を追加"
+      },
+      "step3": {
+        "title": "使用開始",
+        "description": "Claude を再起動し、会話で MCP サーバー機能の使用を開始"
+      }
+    },
+    "getStarted": "今すぐ開始"
+  },
+  "privateMcp": {
+    "title": "プライベート MCP サービス - エンタープライズモデルコンテキストプロトコルソリューション",
+    "description": "エンタープライズグレードのセキュリティでプライベート MCP サーバーをデプロイ。完全な制御、カスタム設定、既存インフラとのシームレスな統合。2025年第2四半期提供予定。",
+    "badge": "エンタープライズセキュリティ",
+    "heading": "プライベート MCP サービス",
+    "subtitle": "エンタープライズグレードのセキュリティ、完全な制御、既存インフラとのシームレスな統合で独自のプライベート MCP サーバーをデプロイ・管理。",
+    "comingSoon": "2025年第2四半期提供予定",
+    "comingSoonSubtitle": "AI インフラの完全な制御を必要とする企業向けの究極のプライベート MCP プラットフォームを構築中。",
+    "features": {
+      "privateDeployment": {
+        "title": "プライベートデプロイメント",
+        "description": "完全なデータ主権とセキュリティ制御で、独自のクラウドまたはオンプレミスインフラに MCP サーバーをデプロイ。"
+      },
+      "customConfiguration": {
+        "title": "カスタム設定",
+        "description": "既存のシステム、API、エンタープライズアプリケーションとシームレスに統合するよう MCP サーバーを設定。"
+      },
+      "teamManagement": {
+        "title": "チーム管理",
+        "description": "エンタープライズコンプライアンス用の高度なユーザー管理、ロールベースのアクセス制御、詳細な監査ログ。"
+      }
+    },
+    "architecture": {
+      "title": "ハイブリッドクラウドアーキテクチャ",
+      "description": "複数のクラウドプロバイダーまたはオンプレミスにデプロイ",
+      "features": [
+        "マルチクラウドデプロイメントオプション",
+        "オンプレミスインストールサポート",
+        "Kubernetes ネイティブアーキテクチャ",
+        "オートスケーリングとロードバランシング"
+      ]
+    },
+    "enterprise": {
+      "title": "エンタープライズ機能",
+      "description": "エンタープライズデプロイメント用の高度な機能",
+      "features": [
+        "シングルサインオン (SSO) 統合",
+        "高度な監視とアラート",
+        "コンプライアンスレポート (SOX, GDPR)",
+        "24/7 専用サポート"
+      ]
+    },
+    "earlyAccess": {
+      "title": "最初のユーザーになる",
+      "description": "早期アクセスプログラムに参加し、プライベート MCP 機能の独占プレビューと早期採用者向けの特別価格を取得。",
+      "joinEarlyAccess": "早期アクセスに参加",
+      "scheduleDemo": "デモを予約"
+    }
+  }
+}

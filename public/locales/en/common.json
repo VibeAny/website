@@ -1,25 +1,162 @@
 {
-  "h1": "A simple example",
-  "change-locale": "Change locale to \"{{changeTo}}\"",
-  "to-second-page": "To second page",
-  "error-with-status": "A {{statusCode}} error occurred on server",
-  "error-without-status": "An error occurred on the server",
-  "title": "Home | next-i18next",
-  "blog": {
-    "appDir": {
-      "question": "Are you using the new Next.js App Router?",
-      "answer": "Then check out <1>this blog post</1>.",
-      "link": "https://www.locize.com/blog/i18n-next-app-router"
+  "common": {
+    "copyright": "© 2025 VibeMCP™. All rights reserved.",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "support": "Support",
+    "loading": "Loading...",
+    "viewRepository": "View Repository"
+  },
+  "navigation": {
+    "mcpHub": "MCP Hub",
+    "remoteMcp": "Remote MCP",
+    "privateMcp": "Private MCP"
+  },
+  "home": {
+    "title": "VibeMCP.net - The Vibe-First MCP Platform",
+    "description": "Discover, deploy, and manage Model Context Protocol servers with enterprise-grade solutions."
+  },
+  "mcpHub": {
+    "title": "MCP Hub - Discover 865+ Model Context Protocol Servers",
+    "description": "Explore our comprehensive database of {{count}}+ Model Context Protocol (MCP) servers from GitHub. Find, filter, and connect with MCP servers for AI applications. Browse by categories, languages, and popularity.",
+    "badge": "MCP Server Database",
+    "heading": "Discover All MCP Servers",
+    "subtitle": "Explore our comprehensive database of {{count}}+ MCP servers from GitHub. Find, filter, and connect with the perfect MCP server for your AI applications and workflows.",
+    "searchPlaceholder": "Search MCP servers...",
+    "allCategories": "All Categories",
+    "allLanguages": "All Languages",
+    "filters": {
+      "official": "Official",
+      "popular": "Popular",
+      "recentlyUpdated": "Recently Updated"
     },
-    "optimized": {
-      "question": "Do you like to unleash some super powers to have all side optimized translations?",
-      "answer": "Then you may have a look at <1>this blog post</1>.",
-      "link": "https://locize.com/blog/next-i18next"
+    "stats": {
+      "showing": "Showing",
+      "of": "of",
+      "servers": "servers",
+      "for": "for",
+      "activeServers": "{{count}} Active Servers",
+      "categories": "{{count}} Categories",
+      "languages": "{{count}} Languages",
+      "lastUpdate": "Last Update"
     },
-    "ssg": {
-      "question": "Do you want to use SSG (next export)?",
-      "answer": "Then you may have a look at <1>this blog post</1>.",
-      "link": "https://locize.com/blog/next-i18n-static"
+    "loadMore": "Scroll down to load more servers automatically",
+    "clearFilters": "Clear all filters"
+  },
+  "remoteMcp": {
+    "title": "Remote MCP Services - Hosted Model Context Protocol Servers",
+    "description": "Connect to our hosted MCP servers instantly. No setup required - access Atlassian, GitHub, and AWS integrations for Claude AI. 99.9% uptime guaranteed.",
+    "badge": "Live & Available",
+    "heading": "Remote MCP Services",
+    "subtitle": "Connect to our hosted MCP servers instantly. No setup required - just copy the URL and start using powerful integrations in your Claude conversations.",
+    "servers": {
+      "atlassian": {
+        "title": "Atlassian MCP Server",
+        "description": "Connect to Jira, Confluence, and other Atlassian services with full API access",
+        "uptime": "99.9% Uptime",
+        "features": [
+          "Full Jira issue management",
+          "Confluence page operations",
+          "Agile board management",
+          "Sprint planning & tracking"
+        ]
+      },
+      "github": {
+        "title": "GitHub MCP Server",
+        "description": "Full GitHub API access for repositories, issues, and workflows",
+        "uptime": "99.9% Uptime",
+        "connect": "Connect Now",
+        "features": [
+          "Repository management",
+          "Issue tracking",
+          "Pull request operations",
+          "GitHub Actions integration"
+        ]
+      },
+      "aws": {
+        "title": "AWS MCP Server",
+        "description": "Comprehensive AWS services integration for cloud infrastructure management",
+        "eta": "Q2 2025",
+        "notify": "Get Notified",
+        "features": [
+          "EC2 instance management",
+          "S3 bucket operations",
+          "Lambda function deployment",
+          "CloudWatch monitoring"
+        ]
+      }
+    },
+    "status": {
+      "active": "Active",
+      "comingSoon": "Coming Soon"
+    },
+    "howToConnect": {
+      "title": "How to Connect",
+      "subtitle": "Get started with Remote MCP servers in just 3 simple steps"
+    },
+    "steps": {
+      "step1": {
+        "title": "Copy Server URL",
+        "description": "Select your desired MCP server and copy the provided connection URL"
+      },
+      "step2": {
+        "title": "Configure Claude",
+        "description": "Add the URL to your Claude Desktop app configuration file"
+      },
+      "step3": {
+        "title": "Start Using",
+        "description": "Restart Claude and start using the MCP server features in your conversations"
+      }
+    },
+    "getStarted": "Get Started Now"
+  },
+  "privateMcp": {
+    "title": "Private MCP Services - Enterprise Model Context Protocol Solutions",
+    "description": "Deploy private MCP servers with enterprise-grade security. Full control, custom configuration, and seamless integration with your existing infrastructure. Coming Q2 2025.",
+    "badge": "Enterprise Security",
+    "heading": "Private MCP Services",
+    "subtitle": "Deploy and manage your own private MCP servers with enterprise-grade security, full control, and seamless integration with your existing infrastructure.",
+    "comingSoon": "Coming Q2 2025",
+    "comingSoonSubtitle": "We're building the ultimate private MCP platform for enterprises who need complete control over their AI infrastructure.",
+    "features": {
+      "privateDeployment": {
+        "title": "Private Deployment",
+        "description": "Deploy MCP servers in your own cloud or on-premises infrastructure with complete data sovereignty and security control."
+      },
+      "customConfiguration": {
+        "title": "Custom Configuration",
+        "description": "Configure MCP servers to integrate seamlessly with your existing systems, APIs, and enterprise applications."
+      },
+      "teamManagement": {
+        "title": "Team Management",
+        "description": "Advanced user management, role-based access control, and detailed audit logs for enterprise compliance."
+      }
+    },
+    "architecture": {
+      "title": "Hybrid Cloud Architecture",
+      "description": "Deploy across multiple cloud providers or on-premises",
+      "features": [
+        "Multi-cloud deployment options",
+        "On-premises installation support",
+        "Kubernetes-native architecture",
+        "Auto-scaling and load balancing"
+      ]
+    },
+    "enterprise": {
+      "title": "Enterprise Features",
+      "description": "Advanced capabilities for enterprise deployments",
+      "features": [
+        "Single Sign-On (SSO) integration",
+        "Advanced monitoring and alerting",
+        "Compliance reporting (SOX, GDPR)",
+        "24/7 dedicated support"
+      ]
+    },
+    "earlyAccess": {
+      "title": "Be Among the First",
+      "description": "Join our early access program and get exclusive previews of Private MCP features, plus special pricing for early adopters.",
+      "joinEarlyAccess": "Join Early Access",
+      "scheduleDemo": "Schedule Demo"
     }
   }
 }

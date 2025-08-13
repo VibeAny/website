@@ -1,7 +1,8 @@
-'use client'
-
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { useTranslation } from 'next-i18next'
+import { LanguageSelector } from './language-selector'
+import { ThemeToggle } from './theme-toggle'
 
 interface NavigationProps {
   currentPath?: string
@@ -27,6 +28,7 @@ const NavItem = ({ href, children, isActive = false }: NavItemProps) => (
 )
 
 export function Navigation({ currentPath = '' }: NavigationProps) {
+  const { t } = useTranslation('common')
   const [isScrolled, setIsScrolled] = useState(false)
   
   // Determine active page based on current path
@@ -70,21 +72,26 @@ export function Navigation({ currentPath = '' }: NavigationProps) {
           </div>
         </Link>
 
-        {/* Navigation Links */}
+        {/* Navigation Links and Controls */}
         <div className="flex items-center space-x-6">
           <NavItem 
             href="/mcp-hub" 
             isActive={isActive('/mcp-hub')}
           >
-            MCP Hub
+            {t('navigation.mcpHub')}
           </NavItem>
           
           <NavItem 
             href="/remote-mcp" 
             isActive={isActive('/remote-mcp')}
           >
-            Remote MCP
+            {t('navigation.remoteMcp')}
           </NavItem>
+          
+          <div className="flex items-center space-x-2">
+            <ThemeToggle />
+            <LanguageSelector />
+          </div>
         </div>
       </nav>
     </header>

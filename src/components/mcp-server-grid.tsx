@@ -50,10 +50,10 @@ export function McpServerGrid({ servers }: McpServerGridProps) {
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {displayServers.map((server, index) => (
         <div key={server.id} className="fade-in" style={{animationDelay: `${0.05 * (index + 1)}s`}}>
-          <Card className="white-card border-0 hover-lift h-full group bg-white/80 backdrop-blur-sm hover:bg-white/90 transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/10">
+          <Card className="white-card border-0 hover-lift h-full group transition-all duration-300">
             <CardHeader className="pb-4">
               <div className="flex items-center justify-between mb-4">
-                <div className="w-14 h-14 rounded-2xl overflow-hidden group-hover:scale-105 transition-transform duration-300 ring-2 ring-gray-100 group-hover:ring-purple-200">
+                <div className="w-14 h-14 rounded-2xl overflow-hidden group-hover:scale-105 transition-transform duration-300 ring-2 ring-border group-hover:ring-primary/30">
                   {server.repository.avatar ? (
                     <Image 
                       src={server.repository.avatar} 
@@ -69,37 +69,37 @@ export function McpServerGrid({ servers }: McpServerGridProps) {
                         const parent = target.parentElement;
                         if (parent && !parent.querySelector('.fallback-icon')) {
                           const fallbackIcon = document.createElement('div');
-                          fallbackIcon.className = 'fallback-icon w-full h-full neumorphism rounded-2xl flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100';
-                          fallbackIcon.innerHTML = '<svg class="h-7 w-7 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 1.79 4 4 4h8c0-2.21-1.79-4-4-4H4V7z"></path></svg>';
+                          fallbackIcon.className = 'fallback-icon w-full h-full neumorphism rounded-2xl flex items-center justify-center bg-muted';
+                          fallbackIcon.innerHTML = '<svg class="h-7 w-7 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 1.79 4 4 4h8c0-2.21-1.79-4-4-4H4V7z"></path></svg>';
                           parent.appendChild(fallbackIcon);
                         }
                       }}
                     />
                   ) : (
-                    <div className="w-full h-full neumorphism rounded-2xl flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100">
-                      <Database className="h-7 w-7 text-gray-400" />
+                    <div className="w-full h-full neumorphism rounded-2xl flex items-center justify-center bg-muted">
+                      <Database className="h-7 w-7 text-muted-foreground" />
                     </div>
                   )}
                 </div>
                 <div className="flex gap-2">
                   {server.status.isOfficial && (
-                    <Badge className="bg-gradient-to-r from-amber-50 to-yellow-50 text-amber-700 border-amber-200/50 px-3 py-1.5 text-xs flex items-center gap-1 shadow-sm font-medium">
+                    <Badge className="bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 border-amber-200 dark:border-amber-700/50 px-3 py-1.5 text-xs flex items-center gap-1 shadow-sm font-medium">
                       <Award className="h-3 w-3" />
                       Official
                     </Badge>
                   )}
                   {server.metrics.popularity.stars > 50 && (
-                    <Badge className="bg-gradient-to-r from-orange-50 to-red-50 text-red-700 border-red-200/50 px-3 py-1.5 text-xs flex items-center gap-1 shadow-sm font-medium">
+                    <Badge className="bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 border-red-200 dark:border-red-700/50 px-3 py-1.5 text-xs flex items-center gap-1 shadow-sm font-medium">
                       <Flame className="h-3 w-3" />
                       Popular
                     </Badge>
                   )}
                 </div>
               </div>
-              <CardTitle className="text-lg font-bold bg-gradient-to-r from-gray-900 to-gray-700 bg-clip-text text-transparent line-clamp-2 group-hover:from-purple-900 group-hover:to-blue-900 transition-all">
+              <CardTitle className="text-lg font-bold text-gradient line-clamp-2">
                 {server.name}
               </CardTitle>
-              <CardDescription className="text-sm text-gray-600 line-clamp-3 min-h-[4.5rem] leading-relaxed">
+              <CardDescription className="text-sm text-muted-foreground line-clamp-3 min-h-[4.5rem] leading-relaxed">
                 {server.description}
               </CardDescription>
             </CardHeader>
@@ -107,7 +107,7 @@ export function McpServerGrid({ servers }: McpServerGridProps) {
               <div className="space-y-3 h-full flex flex-col">
                 {/* Category Badge */}
                 <div className="flex items-center gap-2">
-                  <Badge variant="outline" className="text-xs px-3 py-1 capitalize border-gray-200 text-gray-600 bg-gray-50/50 font-medium">
+                  <Badge variant="outline" className="text-xs px-3 py-1 capitalize border-border text-muted-foreground bg-muted/30 font-medium">
                     {server.category.replace('-', ' ')}
                   </Badge>
                 </div>
@@ -117,7 +117,7 @@ export function McpServerGrid({ servers }: McpServerGridProps) {
                   {server.languages.slice(0, 2).map(lang => {
                     const IconComponent = languageIcons[lang as keyof typeof languageIcons];
                     return (
-                      <Badge key={lang} variant="secondary" className="text-xs px-3 py-1.5 flex items-center gap-1.5 bg-gradient-to-r from-purple-50 to-indigo-50 text-purple-700 border-purple-200/50 font-medium">
+                      <Badge key={lang} variant="secondary" className="text-xs px-3 py-1.5 flex items-center gap-1.5 bg-primary/10 text-primary border-primary/20 font-medium">
                         {IconComponent && <IconComponent className="h-3 w-3" />}
                         {languageLabels[lang] || lang}
                       </Badge>
@@ -126,7 +126,7 @@ export function McpServerGrid({ servers }: McpServerGridProps) {
                   {server.platforms.slice(0, 1).map(platform => {
                     const IconComponent = platformIcons[platform as keyof typeof platformIcons];
                     return (
-                      <Badge key={platform} variant="outline" className="text-xs px-3 py-1.5 flex items-center gap-1.5 border-blue-200 text-blue-700 bg-blue-50/50 font-medium">
+                      <Badge key={platform} variant="outline" className="text-xs px-3 py-1.5 flex items-center gap-1.5 border-border text-muted-foreground bg-muted/30 font-medium">
                         {IconComponent && <IconComponent className="h-3 w-3" />}
                         {platformLabels[platform] || platform}
                       </Badge>
@@ -135,31 +135,31 @@ export function McpServerGrid({ servers }: McpServerGridProps) {
                 </div>
                 
                 {/* GitHub Stats - Enhanced with Watchers */}
-                <div className="flex items-center justify-between py-3 px-4 bg-gradient-to-r from-gray-50 to-slate-50 rounded-xl border border-gray-100">
+                <div className="flex items-center justify-between py-3 px-4 bg-muted/50 rounded-xl border border-border">
                   <div className="flex items-center gap-3">
                     <div className="flex items-center gap-1.5">
-                      <div className="flex items-center justify-center w-6 h-6 rounded-full bg-yellow-100">
-                        <Star className="h-3.5 w-3.5 text-yellow-600 fill-current" />
+                      <div className="flex items-center justify-center w-6 h-6 rounded-full bg-yellow-100 dark:bg-yellow-900/30">
+                        <Star className="h-3.5 w-3.5 text-yellow-600 dark:text-yellow-400 fill-current" />
                       </div>
-                      <span className="text-sm font-semibold text-gray-900">{formatGitHubNumber(server.metrics.popularity.stars)}</span>
+                      <span className="text-sm font-semibold text-foreground">{formatGitHubNumber(server.metrics.popularity.stars)}</span>
                     </div>
                     <div className="flex items-center gap-1.5">
-                      <div className="flex items-center justify-center w-6 h-6 rounded-full bg-blue-100">
-                        <GitBranch className="h-3.5 w-3.5 text-blue-600" />
+                      <div className="flex items-center justify-center w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30">
+                        <GitBranch className="h-3.5 w-3.5 text-blue-600 dark:text-blue-400" />
                       </div>
-                      <span className="text-sm font-semibold text-gray-900">{formatGitHubNumber(server.repository.forks || 0)}</span>
+                      <span className="text-sm font-semibold text-foreground">{formatGitHubNumber(server.repository.forks || 0)}</span>
                     </div>
                     {server.repository.watchers && server.repository.watchers > 0 && (
                       <div className="flex items-center gap-1.5">
-                        <div className="flex items-center justify-center w-6 h-6 rounded-full bg-green-100">
-                          <Eye className="h-3.5 w-3.5 text-green-600" />
+                        <div className="flex items-center justify-center w-6 h-6 rounded-full bg-green-100 dark:bg-green-900/30">
+                          <Eye className="h-3.5 w-3.5 text-green-600 dark:text-green-400" />
                         </div>
-                        <span className="text-sm font-semibold text-gray-900">{formatGitHubNumber(server.repository.watchers)}</span>
+                        <span className="text-sm font-semibold text-foreground">{formatGitHubNumber(server.repository.watchers)}</span>
                       </div>
                     )}
                   </div>
                   <div className="flex items-center justify-center">
-                    <Github className="h-4 w-4 text-gray-600" />
+                    <Github className="h-4 w-4 text-muted-foreground" />
                   </div>
                 </div>
                 

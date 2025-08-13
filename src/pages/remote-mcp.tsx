@@ -16,11 +16,52 @@ import {
   Clock,
   CheckCircle,
 } from "lucide-react";
-export default async function RemoteMcpPage() {
+import { GetStaticProps } from 'next';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import Head from 'next/head';
+
+export default function RemoteMcpPage() {
+  const { t } = useTranslation('common');
+  
+  const title = t('remoteMcp.title');
+  const description = t('remoteMcp.description');
 
   return (
-    <PageLayout currentPath="/remote-mcp">
-      {/* Hero Section */}
+    <>
+      <Head>
+        <title>{title} | VibeMCP</title>
+        <meta name="description" content={description} />
+        <meta name="keywords" content="Remote MCP, Hosted MCP servers, Model Context Protocol hosting, Atlassian MCP, GitHub MCP, AWS MCP, Claude AI integration, Cloud MCP services, VibeMCP hosting" />
+        
+        {/* Open Graph */}
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:type" content="website" />
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:url" content="https://vibemcp.net/remote-mcp" />
+        <meta property="og:site_name" content="VibeMCP" />
+        <meta property="og:image" content="https://vibemcp.net/og-remote-mcp.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Remote MCP Services - Hosted Model Context Protocol Servers" />
+        
+        {/* Twitter Cards */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content="https://vibemcp.net/og-remote-mcp.png" />
+        
+        {/* Canonical */}
+        <link rel="canonical" href="https://vibemcp.net/remote-mcp" />
+        
+        {/* Robots */}
+        <meta name="robots" content="index, follow" />
+        <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1" />
+      </Head>
+      
+      <PageLayout currentPath="/remote-mcp">
+        {/* Hero Section */}
         <section className="container mx-auto px-4 py-16 text-center relative z-10">
           <div className="fade-in" style={{ animationDelay: "0.2s" }}>
             <Badge
@@ -29,20 +70,18 @@ export default async function RemoteMcpPage() {
             >
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                <span className="font-semibold">Live & Available</span>
+                <span className="font-semibold">{t('remoteMcp.badge')}</span>
               </div>
             </Badge>
           </div>
           <div className="fade-in" style={{ animationDelay: "0.4s" }}>
             <h1 className="text-5xl font-black mb-6 text-gradient leading-tight max-w-4xl mx-auto">
-              Remote MCP Services
+              {t('remoteMcp.heading')}
             </h1>
           </div>
           <div className="fade-in" style={{ animationDelay: "0.6s" }}>
             <p className="text-xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed font-medium">
-              Connect to our hosted MCP servers instantly. No setup required -
-              just copy the URL and start using powerful integrations in your
-              Claude conversations.
+              {t('remoteMcp.subtitle')}
             </p>
           </div>
         </section>
@@ -61,45 +100,34 @@ export default async function RemoteMcpPage() {
                     <Badge className="bg-green-50 text-green-600 border-green-200 px-3 py-1">
                       <div className="flex items-center gap-1">
                         <CheckCircle className="h-3 w-3" />
-                        Active
+                        {t('remoteMcp.status.active')}
                       </div>
                     </Badge>
                   </div>
                   <CardTitle className="text-xl font-bold text-gradient">
-                    Atlassian MCP Server
+                    {t('remoteMcp.servers.atlassian.title')}
                   </CardTitle>
                   <CardDescription className="text-base text-muted-foreground">
-                    Connect to Jira, Confluence, and other Atlassian services
-                    with full API access
+                    {t('remoteMcp.servers.atlassian.description')}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
                       <Clock className="h-4 w-4" />
-                      <span>99.9% Uptime</span>
+                      <span>{t('remoteMcp.servers.atlassian.uptime')}</span>
                     </div>
                     <ul className="text-sm text-muted-foreground space-y-2 font-medium">
-                      <li className="flex items-center gap-2">
-                        <div className="w-1.5 h-1.5 bg-blue-500 rounded-full ui-pulse-glow" />
-                        Full Jira issue management
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <div className="w-1.5 h-1.5 bg-blue-500 rounded-full ui-pulse-glow" />
-                        Confluence page operations
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <div className="w-1.5 h-1.5 bg-blue-500 rounded-full ui-pulse-glow" />
-                        Agile board management
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <div className="w-1.5 h-1.5 bg-blue-500 rounded-full ui-pulse-glow" />
-                        Sprint planning & tracking
-                      </li>
+                      {(t('remoteMcp.servers.atlassian.features', { returnObjects: true }) as string[]).map((feature: string, index: number) => (
+                        <li key={index} className="flex items-center gap-2">
+                          <div className="w-1.5 h-1.5 bg-blue-500 rounded-full ui-pulse-glow" />
+                          {feature}
+                        </li>
+                      ))}
                     </ul>
                     <div className="flex items-center gap-3 pt-4">
                       <Button size="sm" className="btn-modern flex-1">
-                        Connect Now
+                        {t('remoteMcp.servers.github.connect')}
                         <ArrowRight className="ml-2 h-4 w-4" />
                       </Button>
                       <Button
@@ -133,44 +161,34 @@ export default async function RemoteMcpPage() {
                     <Badge className="bg-green-50 text-green-600 border-green-200 px-3 py-1">
                       <div className="flex items-center gap-1">
                         <CheckCircle className="h-3 w-3" />
-                        Active
+                        {t('remoteMcp.status.active')}
                       </div>
                     </Badge>
                   </div>
                   <CardTitle className="text-xl font-bold text-gradient">
-                    GitHub MCP Server
+                    {t('remoteMcp.servers.github.title')}
                   </CardTitle>
                   <CardDescription className="text-base text-muted-foreground">
-                    Full GitHub API access for repositories, issues, and workflows
+                    {t('remoteMcp.servers.github.description')}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
                       <Clock className="h-4 w-4" />
-                      <span>99.9% Uptime</span>
+                      <span>{t('remoteMcp.servers.github.uptime')}</span>
                     </div>
                     <ul className="text-sm text-muted-foreground space-y-2 font-medium">
-                      <li className="flex items-center gap-2">
-                        <div className="w-1.5 h-1.5 bg-gray-700 rounded-full ui-pulse-glow" />
-                        Repository management
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <div className="w-1.5 h-1.5 bg-gray-700 rounded-full ui-pulse-glow" />
-                        Issue tracking
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <div className="w-1.5 h-1.5 bg-gray-700 rounded-full ui-pulse-glow" />
-                        Pull request operations
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <div className="w-1.5 h-1.5 bg-gray-700 rounded-full ui-pulse-glow" />
-                        GitHub Actions integration
-                      </li>
+                      {(t('remoteMcp.servers.github.features', { returnObjects: true }) as string[]).map((feature: string, index: number) => (
+                        <li key={index} className="flex items-center gap-2">
+                          <div className="w-1.5 h-1.5 bg-gray-700 rounded-full ui-pulse-glow" />
+                          {feature}
+                        </li>
+                      ))}
                     </ul>
                     <div className="flex items-center gap-3 pt-4">
                       <Button size="sm" className="btn-modern flex-1">
-                        Connect Now
+                        {t('remoteMcp.servers.github.connect')}
                         <ArrowRight className="ml-2 h-4 w-4" />
                       </Button>
                       <Button
@@ -204,40 +222,30 @@ export default async function RemoteMcpPage() {
                     <Badge className="bg-orange-50 text-orange-600 border-orange-200 px-3 py-1">
                       <div className="flex items-center gap-1">
                         <Clock className="h-3 w-3" />
-                        Coming Soon
+                        {t('remoteMcp.status.comingSoon')}
                       </div>
                     </Badge>
                   </div>
                   <CardTitle className="text-xl font-bold text-gradient">
-                    AWS MCP Server
+                    {t('remoteMcp.servers.aws.title')}
                   </CardTitle>
                   <CardDescription className="text-base text-muted-foreground">
-                    Comprehensive AWS services integration for cloud infrastructure management
+                    {t('remoteMcp.servers.aws.description')}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
                       <Clock className="h-4 w-4" />
-                      <span>Q2 2025</span>
+                      <span>{t('remoteMcp.servers.aws.eta')}</span>
                     </div>
                     <ul className="text-sm text-muted-foreground space-y-2 font-medium">
-                      <li className="flex items-center gap-2">
-                        <div className="w-1.5 h-1.5 bg-orange-500 rounded-full ui-pulse-glow" />
-                        EC2 instance management
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <div className="w-1.5 h-1.5 bg-orange-500 rounded-full ui-pulse-glow" />
-                        S3 bucket operations
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <div className="w-1.5 h-1.5 bg-orange-500 rounded-full ui-pulse-glow" />
-                        Lambda function deployment
-                      </li>
-                      <li className="flex items-center gap-2">
-                        <div className="w-1.5 h-1.5 bg-orange-500 rounded-full ui-pulse-glow" />
-                        CloudWatch monitoring
-                      </li>
+                      {(t('remoteMcp.servers.aws.features', { returnObjects: true }) as string[]).map((feature: string, index: number) => (
+                        <li key={index} className="flex items-center gap-2">
+                          <div className="w-1.5 h-1.5 bg-orange-500 rounded-full ui-pulse-glow" />
+                          {feature}
+                        </li>
+                      ))}
                     </ul>
                     <div className="flex items-center gap-3 pt-4">
                       <Button
@@ -246,7 +254,7 @@ export default async function RemoteMcpPage() {
                         className="white-button flex-1"
                         disabled
                       >
-                        Get Notified
+                        {t('remoteMcp.servers.aws.notify')}
                       </Button>
                       <Button
                         size="sm"
@@ -272,10 +280,10 @@ export default async function RemoteMcpPage() {
               style={{ animationDelay: "0.2s" }}
             >
               <h2 className="text-4xl font-black mb-6 text-gradient">
-                How to Connect
+                {t('remoteMcp.howToConnect.title')}
               </h2>
               <p className="text-xl text-muted-foreground font-medium max-w-3xl mx-auto">
-                Get started with Remote MCP servers in just 3 simple steps
+                {t('remoteMcp.howToConnect.subtitle')}
               </p>
             </div>
 
@@ -288,10 +296,10 @@ export default async function RemoteMcpPage() {
                   <span className="text-3xl font-black text-primary">1</span>
                 </div>
                 <h3 className="text-xl font-bold mb-4 text-gradient">
-                  Copy Server URL
+                  {t('remoteMcp.steps.step1.title')}
                 </h3>
                 <p className="text-muted-foreground font-medium leading-relaxed">
-                  Select your desired MCP server and copy the provided connection URL
+                  {t('remoteMcp.steps.step1.description')}
                 </p>
               </div>
 
@@ -303,10 +311,10 @@ export default async function RemoteMcpPage() {
                   <span className="text-3xl font-black text-primary">2</span>
                 </div>
                 <h3 className="text-xl font-bold mb-4 text-gradient">
-                  Configure Claude
+                  {t('remoteMcp.steps.step2.title')}
                 </h3>
                 <p className="text-muted-foreground font-medium leading-relaxed">
-                  Add the URL to your Claude Desktop app configuration file
+                  {t('remoteMcp.steps.step2.description')}
                 </p>
               </div>
 
@@ -318,10 +326,10 @@ export default async function RemoteMcpPage() {
                   <span className="text-3xl font-black text-primary">3</span>
                 </div>
                 <h3 className="text-xl font-bold mb-4 text-gradient">
-                  Start Using
+                  {t('remoteMcp.steps.step3.title')}
                 </h3>
                 <p className="text-muted-foreground font-medium leading-relaxed">
-                  Restart Claude and start using the MCP server features in your conversations
+                  {t('remoteMcp.steps.step3.description')}
                 </p>
               </div>
             </div>
@@ -334,12 +342,21 @@ export default async function RemoteMcpPage() {
                 size="lg"
                 className="btn-modern px-10 py-4 text-lg font-semibold"
               >
-                Get Started Now
+                {t('remoteMcp.getStarted')}
                 <ArrowRight className="ml-3 h-5 w-5" />
               </Button>
             </div>
           </div>
         </section>
-    </PageLayout>
+      </PageLayout>
+    </>
   );
 }
+
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale ?? 'en', ['common'])),
+    },
+  };
+};
