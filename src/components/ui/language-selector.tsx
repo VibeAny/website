@@ -11,6 +11,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
+import languageDetector from '@/lib/languageDetector'
 
 const languages = [
   { code: 'en', name: 'English' },
@@ -36,6 +37,11 @@ export function LanguageSelector() {
           <DropdownMenuItem key={language.code} asChild>
             <Link
               href={asPath}
+              onClick={() => {
+                if (languageDetector.cache) {
+                  languageDetector.cache(language.code)
+                }
+              }}
               locale={language.code}
               className="flex items-center justify-between w-full px-3 py-2 cursor-pointer hover:bg-muted/50 rounded-lg transition-colors"
             >

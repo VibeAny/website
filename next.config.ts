@@ -7,6 +7,8 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
+  // For static export, we need to use next-language-detector
+  // See: https://locize.com/blog/next-i18n-static/
 };
 
 export default nextConfig;

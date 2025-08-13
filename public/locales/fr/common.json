@@ -1,0 +1,162 @@
+{
+  "common": {
+    "copyright": "© 2025 VibeMCP™. Tous droits réservés.",
+    "privacy": "Confidentialité",
+    "terms": "Conditions",
+    "support": "Support",
+    "loading": "Chargement...",
+    "viewRepository": "Voir le dépôt"
+  },
+  "navigation": {
+    "mcpHub": "Hub MCP",
+    "remoteMcp": "MCP distant",
+    "privateMcp": "MCP privé"
+  },
+  "home": {
+    "title": "VibeMCP.net - La plateforme MCP axée sur l'expérience",
+    "description": "Découvrez, déployez et gérez les serveurs Model Context Protocol avec des solutions d'entreprise."
+  },
+  "mcpHub": {
+    "title": "Hub MCP - Découvrez 865+ serveurs Model Context Protocol",
+    "description": "Explorez notre base de données complète de {{count}}+ serveurs Model Context Protocol (MCP) de GitHub. Trouvez, filtrez et connectez-vous aux serveurs MCP pour les applications IA. Parcourez par catégories, langages et popularité.",
+    "badge": "Base de données serveur MCP",
+    "heading": "Découvrir tous les serveurs MCP",
+    "subtitle": "Explorez notre base de données complète de {{count}}+ serveurs MCP de GitHub. Trouvez, filtrez et connectez-vous au serveur MCP parfait pour vos applications IA et flux de travail.",
+    "searchPlaceholder": "Rechercher des serveurs MCP...",
+    "allCategories": "Toutes les catégories",
+    "allLanguages": "Tous les langages",
+    "filters": {
+      "official": "Officiel",
+      "popular": "Populaire",
+      "recentlyUpdated": "Récemment mis à jour"
+    },
+    "stats": {
+      "showing": "Affichage",
+      "of": "de",
+      "servers": "serveurs",
+      "for": "pour",
+      "activeServers": "{{count}} serveurs actifs",
+      "categories": "{{count}} catégories",
+      "languages": "{{count}} langages",
+      "lastUpdate": "Dernière mise à jour"
+    },
+    "loadMore": "Faites défiler vers le bas pour charger plus de serveurs automatiquement",
+    "clearFilters": "Effacer tous les filtres"
+  },
+  "remoteMcp": {
+    "title": "Services MCP distants - Serveurs Model Context Protocol hébergés",
+    "description": "Connectez-vous à nos serveurs MCP hébergés instantanément. Aucune configuration requise - accédez aux intégrations Atlassian, GitHub et AWS pour Claude AI. Disponibilité garantie à 99,9%.",
+    "badge": "En ligne et disponible",
+    "heading": "Services MCP distants",
+    "subtitle": "Connectez-vous à nos serveurs MCP hébergés instantanément. Aucune configuration requise - copiez simplement l'URL et commencez à utiliser de puissantes intégrations dans vos conversations Claude.",
+    "servers": {
+      "atlassian": {
+        "title": "Serveur MCP Atlassian",
+        "description": "Connectez-vous à Jira, Confluence et autres services Atlassian avec accès API complet",
+        "uptime": "99,9% de disponibilité",
+        "features": [
+          "Gestion complète des problèmes Jira",
+          "Opérations de page Confluence",
+          "Gestion de tableau Agile",
+          "Planification et suivi de Sprint"
+        ]
+      },
+      "github": {
+        "title": "Serveur MCP GitHub",
+        "description": "Accès complet à l'API GitHub pour les dépôts, problèmes et flux de travail",
+        "uptime": "99,9% de disponibilité",
+        "connect": "Se connecter maintenant",
+        "features": [
+          "Gestion de dépôt",
+          "Suivi des problèmes",
+          "Opérations de demande de tirage",
+          "Intégration GitHub Actions"
+        ]
+      },
+      "aws": {
+        "title": "Serveur MCP AWS",
+        "description": "Intégration complète des services AWS pour la gestion d'infrastructure cloud",
+        "eta": "T2 2025",
+        "notify": "Être notifié",
+        "features": [
+          "Gestion d'instance EC2",
+          "Opérations de compartiment S3",
+          "Déploiement de fonction Lambda",
+          "Surveillance CloudWatch"
+        ]
+      }
+    },
+    "status": {
+      "active": "Actif",
+      "comingSoon": "Bientôt disponible"
+    },
+    "howToConnect": {
+      "title": "Comment se connecter",
+      "subtitle": "Commencez avec les serveurs MCP distants en seulement 3 étapes simples"
+    },
+    "steps": {
+      "step1": {
+        "title": "Copier l'URL du serveur",
+        "description": "Sélectionnez votre serveur MCP désiré et copiez l'URL de connexion fournie"
+      },
+      "step2": {
+        "title": "Configurer Claude",
+        "description": "Ajoutez l'URL à votre fichier de configuration de l'application Claude Desktop"
+      },
+      "step3": {
+        "title": "Commencer à utiliser",
+        "description": "Redémarrez Claude et commencez à utiliser les fonctionnalités du serveur MCP dans vos conversations"
+      }
+    },
+    "getStarted": "Commencer maintenant"
+  },
+  "privateMcp": {
+    "title": "Services MCP privés - Solutions Model Context Protocol d'entreprise",
+    "description": "Déployez des serveurs MCP privés avec sécurité de niveau entreprise. Contrôle complet, configuration personnalisée et intégration transparente avec votre infrastructure existante. Disponible T2 2025.",
+    "badge": "Sécurité d'entreprise",
+    "heading": "Services MCP privés",
+    "subtitle": "Déployez et gérez vos propres serveurs MCP privés avec sécurité de niveau entreprise, contrôle complet et intégration transparente avec votre infrastructure existante.",
+    "comingSoon": "Disponible T2 2025",
+    "comingSoonSubtitle": "Nous construisons la plateforme MCP privée ultime pour les entreprises qui ont besoin d'un contrôle complet sur leur infrastructure IA.",
+    "features": {
+      "privateDeployment": {
+        "title": "Déploiement privé",
+        "description": "Déployez des serveurs MCP dans votre propre cloud ou infrastructure sur site avec souveraineté complète des données et contrôle de sécurité."
+      },
+      "customConfiguration": {
+        "title": "Configuration personnalisée",
+        "description": "Configurez les serveurs MCP pour s'intégrer parfaitement avec vos systèmes existants, APIs et applications d'entreprise."
+      },
+      "teamManagement": {
+        "title": "Gestion d'équipe",
+        "description": "Gestion avancée des utilisateurs, contrôle d'accès basé sur les rôles et journaux d'audit détaillés pour la conformité d'entreprise."
+      }
+    },
+    "architecture": {
+      "title": "Architecture cloud hybride",
+      "description": "Déployez sur plusieurs fournisseurs cloud ou sur site",
+      "features": [
+        "Options de déploiement multi-cloud",
+        "Support d'installation sur site",
+        "Architecture native Kubernetes",
+        "Auto-scaling et équilibrage de charge"
+      ]
+    },
+    "enterprise": {
+      "title": "Fonctionnalités d'entreprise",
+      "description": "Capacités avancées pour les déploiements d'entreprise",
+      "features": [
+        "Intégration Single Sign-On (SSO)",
+        "Surveillance et alertes avancées",
+        "Rapports de conformité (SOX, GDPR)",
+        "Support dédié 24/7"
+      ]
+    },
+    "earlyAccess": {
+      "title": "Soyez parmi les premiers",
+      "description": "Rejoignez notre programme d'accès anticipé et obtenez des aperçus exclusifs des fonctionnalités MCP privé, plus des tarifs spéciaux pour les adopteurs précoces.",
+      "joinEarlyAccess": "Rejoindre l'accès anticipé",
+      "scheduleDemo": "Programmer une démo"
+    }
+  }
+}

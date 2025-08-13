@@ -1,0 +1,162 @@
+{
+  "common": {
+    "copyright": "© 2025 VibeMCP™. 모든 권리 보유.",
+    "privacy": "개인정보보호",
+    "terms": "약관",
+    "support": "지원",
+    "loading": "로딩 중...",
+    "viewRepository": "저장소 보기"
+  },
+  "navigation": {
+    "mcpHub": "MCP 허브",
+    "remoteMcp": "원격 MCP",
+    "privateMcp": "프라이빗 MCP"
+  },
+  "home": {
+    "title": "VibeMCP.net - 경험 중심의 MCP 플랫폼",
+    "description": "엔터프라이즈급 솔루션으로 Model Context Protocol 서버를 발견하고, 배포하고, 관리하세요."
+  },
+  "mcpHub": {
+    "title": "MCP 허브 - 865개 이상의 Model Context Protocol 서버 발견",
+    "description": "GitHub의 {{count}}개 이상 Model Context Protocol (MCP) 서버의 종합 데이터베이스를 탐색하세요. AI 애플리케이션용 MCP 서버를 찾고, 필터링하고, 연결하세요. 카테고리, 언어, 인기도별로 탐색하세요.",
+    "badge": "MCP 서버 데이터베이스",
+    "heading": "모든 MCP 서버 발견",
+    "subtitle": "GitHub의 {{count}}개 이상 MCP 서버의 종합 데이터베이스를 탐색하세요. AI 애플리케이션과 워크플로우에 완벽한 MCP 서버를 찾고, 필터링하고, 연결하세요.",
+    "searchPlaceholder": "MCP 서버 검색...",
+    "allCategories": "모든 카테고리",
+    "allLanguages": "모든 언어",
+    "filters": {
+      "official": "공식",
+      "popular": "인기",
+      "recentlyUpdated": "최근 업데이트"
+    },
+    "stats": {
+      "showing": "표시 중",
+      "of": "/",
+      "servers": "서버",
+      "for": "대상:",
+      "activeServers": "{{count}}개 활성 서버",
+      "categories": "{{count}}개 카테고리",
+      "languages": "{{count}}개 언어",
+      "lastUpdate": "마지막 업데이트"
+    },
+    "loadMore": "아래로 스크롤하여 더 많은 서버를 자동으로 로드",
+    "clearFilters": "모든 필터 지우기"
+  },
+  "remoteMcp": {
+    "title": "원격 MCP 서비스 - 호스팅된 Model Context Protocol 서버",
+    "description": "호스팅된 MCP 서버에 즉시 연결하세요. 설정 불필요 - Claude AI용 Atlassian, GitHub, AWS 통합에 액세스하세요. 99.9% 가동시간 보장.",
+    "badge": "라이브 및 사용 가능",
+    "heading": "원격 MCP 서비스",
+    "subtitle": "호스팅된 MCP 서버에 즉시 연결하세요. 설정 불필요 - URL을 복사하고 Claude 대화에서 강력한 통합 사용을 시작하세요.",
+    "servers": {
+      "atlassian": {
+        "title": "Atlassian MCP 서버",
+        "description": "전체 API 액세스로 Jira, Confluence 및 기타 Atlassian 서비스에 연결",
+        "uptime": "99.9% 가동시간",
+        "features": [
+          "완전한 Jira 이슈 관리",
+          "Confluence 페이지 작업",
+          "애자일 보드 관리",
+          "스프린트 계획 및 추적"
+        ]
+      },
+      "github": {
+        "title": "GitHub MCP 서버",
+        "description": "저장소, 이슈 및 워크플로우에 대한 완전한 GitHub API 액세스",
+        "uptime": "99.9% 가동시간",
+        "connect": "지금 연결",
+        "features": [
+          "저장소 관리",
+          "이슈 추적",
+          "풀 리퀘스트 작업",
+          "GitHub Actions 통합"
+        ]
+      },
+      "aws": {
+        "title": "AWS MCP 서버",
+        "description": "클라우드 인프라 관리를 위한 포괄적인 AWS 서비스 통합",
+        "eta": "2025년 2분기",
+        "notify": "알림 받기",
+        "features": [
+          "EC2 인스턴스 관리",
+          "S3 버킷 작업",
+          "Lambda 함수 배포",
+          "CloudWatch 모니터링"
+        ]
+      }
+    },
+    "status": {
+      "active": "활성",
+      "comingSoon": "곧 출시"
+    },
+    "howToConnect": {
+      "title": "연결 방법",
+      "subtitle": "단 3가지 간단한 단계로 원격 MCP 서버를 시작하세요"
+    },
+    "steps": {
+      "step1": {
+        "title": "서버 URL 복사",
+        "description": "원하는 MCP 서버를 선택하고 제공된 연결 URL을 복사하세요"
+      },
+      "step2": {
+        "title": "Claude 구성",
+        "description": "Claude Desktop 앱 구성 파일에 URL을 추가하세요"
+      },
+      "step3": {
+        "title": "사용 시작",
+        "description": "Claude를 재시작하고 대화에서 MCP 서버 기능 사용을 시작하세요"
+      }
+    },
+    "getStarted": "지금 시작하기"
+  },
+  "privateMcp": {
+    "title": "프라이빗 MCP 서비스 - 엔터프라이즈 Model Context Protocol 솔루션",
+    "description": "엔터프라이즈급 보안으로 프라이빗 MCP 서버를 배포하세요. 완전한 제어, 사용자 정의 구성 및 기존 인프라와의 원활한 통합. 2025년 2분기 출시 예정.",
+    "badge": "엔터프라이즈 보안",
+    "heading": "프라이빗 MCP 서비스",
+    "subtitle": "엔터프라이즈급 보안, 완전한 제어 및 기존 인프라와의 원활한 통합으로 자체 프라이빗 MCP 서버를 배포하고 관리하세요.",
+    "comingSoon": "2025년 2분기 출시",
+    "comingSoonSubtitle": "AI 인프라에 대한 완전한 제어가 필요한 기업을 위한 궁극적인 프라이빗 MCP 플랫폼을 구축하고 있습니다.",
+    "features": {
+      "privateDeployment": {
+        "title": "프라이빗 배포",
+        "description": "완전한 데이터 주권과 보안 제어로 자체 클라우드 또는 온프레미스 인프라에 MCP 서버를 배포하세요."
+      },
+      "customConfiguration": {
+        "title": "사용자 정의 구성",
+        "description": "기존 시스템, API 및 엔터프라이즈 애플리케이션과 원활하게 통합되도록 MCP 서버를 구성하세요."
+      },
+      "teamManagement": {
+        "title": "팀 관리",
+        "description": "엔터프라이즈 규정 준수를 위한 고급 사용자 관리, 역할 기반 액세스 제어 및 상세한 감사 로그."
+      }
+    },
+    "architecture": {
+      "title": "하이브리드 클라우드 아키텍처",
+      "description": "여러 클라우드 제공업체 또는 온프레미스에 배포",
+      "features": [
+        "멀티클라우드 배포 옵션",
+        "온프레미스 설치 지원",
+        "Kubernetes 네이티브 아키텍처",
+        "자동 확장 및 로드 밸런싱"
+      ]
+    },
+    "enterprise": {
+      "title": "엔터프라이즈 기능",
+      "description": "엔터프라이즈 배포를 위한 고급 기능",
+      "features": [
+        "Single Sign-On (SSO) 통합",
+        "고급 모니터링 및 알림",
+        "규정 준수 보고 (SOX, GDPR)",
+        "24/7 전담 지원"
+      ]
+    },
+    "earlyAccess": {
+      "title": "최초 사용자가 되세요",
+      "description": "얼리 액세스 프로그램에 참여하여 프라이빗 MCP 기능의 독점 미리보기와 얼리 어답터를 위한 특별 가격을 받으세요.",
+      "joinEarlyAccess": "얼리 액세스 참여",
+      "scheduleDemo": "데모 예약"
+    }
+  }
+}
