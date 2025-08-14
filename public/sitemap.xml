@@ -1,46 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
-        xmlns:xhtml="http://www.w3.org/1999/xhtml"
-        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://vibemcp.net</loc>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://vibemcp.net/zh" />
-    <lastmod>2025-08-14T10:43:42.710Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://vibemcp.net/zh</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://vibemcp.net" />
-    <lastmod>2025-08-14T10:43:42.712Z</lastmod>
+    <lastmod>2025-08-14T11:07:50.877Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://vibemcp.net/mcp-hub</loc>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://vibemcp.net/zh/mcp-hub" />
-    <lastmod>2025-08-14T10:43:42.712Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://vibemcp.net/zh/mcp-hub</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://vibemcp.net/mcp-hub" />
-    <lastmod>2025-08-14T10:43:42.712Z</lastmod>
+    <lastmod>2025-08-14T11:07:50.877Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://vibemcp.net/remote-mcp</loc>
-    <xhtml:link rel="alternate" hreflang="zh" href="https://vibemcp.net/zh/remote-mcp" />
-    <lastmod>2025-08-14T10:43:42.712Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://vibemcp.net/zh/remote-mcp</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://vibemcp.net/remote-mcp" />
-    <lastmod>2025-08-14T10:43:42.712Z</lastmod>
+    <lastmod>2025-08-14T11:07:50.877Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
