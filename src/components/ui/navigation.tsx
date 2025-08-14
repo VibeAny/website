@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useTranslation } from 'next-i18next'
+import { Menu, X } from 'lucide-react'
 // import { LanguageSelector } from './language-selector'
 import { ThemeToggle } from './theme-toggle'
 
@@ -30,6 +31,7 @@ const NavItem = ({ href, children, isActive = false }: NavItemProps) => (
 export function Navigation({ currentPath = '' }: NavigationProps) {
   const { t } = useTranslation('common')
   const [isScrolled, setIsScrolled] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   
   // Determine active page based on current path
   const isActive = (path: string) => currentPath.includes(path)
@@ -72,8 +74,8 @@ export function Navigation({ currentPath = '' }: NavigationProps) {
           </div>
         </Link>
 
-        {/* Navigation Links and Controls */}
-        <div className="flex items-center space-x-6">
+        {/* Desktop Navigation Links and Controls */}
+        <div className="hidden md:flex items-center space-x-6">
           <NavItem 
             href="/mcp-hub" 
             isActive={isActive('/mcp-hub')}
@@ -93,7 +95,54 @@ export function Navigation({ currentPath = '' }: NavigationProps) {
             {/* <LanguageSelector /> */}
           </div>
         </div>
+
+        {/* Mobile Menu Controls */}
+        <div className="md:hidden flex items-center space-x-2">
+          <ThemeToggle />
+          <button
+            className="p-2 text-muted-foreground hover:text-primary transition-colors"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle mobile menu"
+          >
+            {isMobileMenuOpen ? (
+              <X className="h-6 w-6" />
+            ) : (
+              <Menu className="h-6 w-6" />
+            )}
+          </button>
+        </div>
       </nav>
+
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden fixed inset-x-0 top-[88px] bg-background/95 backdrop-blur-md border-t z-50">
+          <div className="container mx-auto px-4 py-6 space-y-4">
+            <Link
+              href="/mcp-hub"
+              className={`block px-4 py-3 rounded-lg transition-all duration-300 ${
+                isActive('/mcp-hub')
+                  ? "text-primary font-semibold bg-primary/10"
+                  : "text-muted-foreground hover:text-primary hover:bg-muted/50"
+              }`}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              {t('navigation.mcpHub')}
+            </Link>
+            
+            <Link
+              href="/remote-mcp"
+              className={`block px-4 py-3 rounded-lg transition-all duration-300 ${
+                isActive('/remote-mcp')
+                  ? "text-primary font-semibold bg-primary/10"
+                  : "text-muted-foreground hover:text-primary hover:bg-muted/50"
+              }`}
+              onClick={() => setIsMobileMenuOpen(false)}
+            >
+              {t('navigation.remoteMcp')}
+            </Link>
+          </div>
+        </div>
+      )}
     </header>
   )
 }

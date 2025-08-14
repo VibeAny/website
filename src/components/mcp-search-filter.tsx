@@ -37,7 +37,7 @@ export function McpSearchFilter({ servers, categories, onFilteredServers }: McpS
       result = result.filter(server => 
         server.name.toLowerCase().includes(debouncedSearchQuery.toLowerCase()) ||
         server.description.toLowerCase().includes(debouncedSearchQuery.toLowerCase()) ||
-        server.tags.some(tag => tag.toLowerCase().includes(debouncedSearchQuery.toLowerCase()))
+        (server.metadata?.tags || []).some(tag => tag.toLowerCase().includes(debouncedSearchQuery.toLowerCase()))
       )
     }
 
@@ -48,21 +48,23 @@ export function McpSearchFilter({ servers, categories, onFilteredServers }: McpS
 
     // Apply language filter
     if (selectedLanguage) {
-      result = result.filter(server => server.languages.includes(selectedLanguage))
+      result = result.filter(server => (server.metadata?.languages || []).includes(selectedLanguage))
     }
 
     // Apply quick filters - since servers are already sorted by popularity by default,
     // we only need to re-sort if Popular is disabled or Recent is enabled
     if (showOfficial) {
-      result = result.filter(server => server.status.isOfficial)
+      result = result.filter(server => server.metadata?.isOfficial)
     }
 
     // Note: showPopular doesn't change sorting since servers are already sorted by popularity
     
     if (showRecent) {
-      result = result.sort((a, b) => 
-        new Date(b.repository.lastUpdated).getTime() - new Date(a.repository.lastUpdated).getTime()
-      )
+      result = result.sort((a, b) => {
+        const aDate = a.repository.lastUpdated ? new Date(a.repository.lastUpdated).getTime() : 0
+        const bDate = b.repository.lastUpdated ? new Date(b.repository.lastUpdated).getTime() : 0
+        return bDate - aDate
+      })
     } else if (!showPopular) {
       // If Popular is disabled, don't maintain the popularity sorting
       // This could be expanded to show a different default order
@@ -106,14 +108,15 @@ export function McpSearchFilter({ servers, categories, onFilteredServers }: McpS
   }
 
   return (
-    <div className="white-card rounded-3xl p-8 mb-12">
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-        {/* Search Bar */}
-        <div className="md:col-span-2">
+    <div className="white-card rounded-3xl p-4 sm:p-6 lg:p-8 mb-8 sm:mb-12">
+      {/* Mobile-First Grid Layout */}
+      <div className="space-y-4 sm:space-y-0 sm:grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+        {/* Search Bar - Full width on mobile, spans 2 cols on desktop */}
+        <div className="sm:col-span-1 md:col-span-2">
           <div className="relative">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground z-10 pointer-events-none" />
             <input
-              className="w-full pl-12 pr-4 py-3.5 rounded-2xl border-2 border-border bg-background/70 backdrop-blur-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all placeholder-muted-foreground font-medium relative z-0"
+              className="w-full pl-12 pr-4 py-3 sm:py-3.5 rounded-2xl border-2 border-border bg-background/70 backdrop-blur-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all placeholder-muted-foreground font-medium text-sm sm:text-base relative z-0"
               placeholder="Search MCP servers..."
               type="text"
               value={searchQuery}
@@ -126,7 +129,7 @@ export function McpSearchFilter({ servers, categories, onFilteredServers }: McpS
         <div>
           <div className="relative">
             <select 
-              className="w-full pl-4 pr-10 py-3.5 rounded-2xl border-2 border-border bg-background/70 backdrop-blur-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all font-medium text-foreground appearance-none cursor-pointer"
+              className="w-full pl-4 pr-10 py-3 sm:py-3.5 rounded-2xl border-2 border-border bg-background/70 backdrop-blur-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all font-medium text-foreground text-sm sm:text-base appearance-none cursor-pointer"
               value={selectedCategory}
               onChange={handleCategoryChange}
             >
@@ -145,7 +148,7 @@ export function McpSearchFilter({ servers, categories, onFilteredServers }: McpS
         <div>
           <div className="relative">
             <select 
-              className="w-full pl-4 pr-10 py-3.5 rounded-2xl border-2 border-border bg-background/70 backdrop-blur-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all font-medium text-foreground appearance-none cursor-pointer"
+              className="w-full pl-4 pr-10 py-3 sm:py-3.5 rounded-2xl border-2 border-border bg-background/70 backdrop-blur-sm focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all font-medium text-foreground text-sm sm:text-base appearance-none cursor-pointer"
               value={selectedLanguage}
               onChange={handleLanguageChange}
             >
@@ -165,55 +168,56 @@ export function McpSearchFilter({ servers, categories, onFilteredServers }: McpS
         </div>
       </div>
       
-      {/* Quick Filter Tags - Unified with card style */}
-      <div className="flex flex-wrap gap-3 mt-8">
+      {/* Quick Filter Tags - Enhanced Mobile Layout */}
+      <div className="flex flex-wrap gap-2 sm:gap-3 mt-6 sm:mt-8">
         <Badge 
           variant="secondary" 
-          className={`px-4 py-2 cursor-pointer transition-all duration-300 flex items-center gap-2 text-sm font-medium rounded-xl border white-card ${
+          className={`px-3 sm:px-4 py-1.5 sm:py-2 cursor-pointer transition-all duration-300 flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-medium rounded-xl border white-card ${
             showOfficial 
-              ? 'bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 border-amber-200 dark:border-amber-700/50 shadow-sm' 
+              ? '!bg-amber-100 dark:!bg-amber-900/30 !text-amber-700 dark:!text-amber-400 !border-amber-200 dark:!border-amber-700/50 shadow-sm' 
               : 'hover:bg-amber-50 dark:hover:bg-amber-900/20 hover:text-amber-600 dark:hover:text-amber-400'
           }`}
           onClick={() => toggleQuickFilter('official')}
         >
-          <Award className="h-4 w-4" />
+          <Award className="h-3 w-3 sm:h-4 sm:w-4" />
           Official
         </Badge>
         <Badge 
           variant="secondary" 
-          className={`px-4 py-2 cursor-pointer transition-all duration-300 flex items-center gap-2 text-sm font-medium rounded-xl border white-card ${
+          className={`px-3 sm:px-4 py-1.5 sm:py-2 cursor-pointer transition-all duration-300 flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-medium rounded-xl border white-card ${
             showPopular 
-              ? 'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 border-red-200 dark:border-red-700/50 shadow-sm' 
+              ? '!bg-red-100 dark:!bg-red-900/30 !text-red-700 dark:!text-red-400 !border-red-200 dark:!border-red-700/50 shadow-sm' 
               : 'hover:bg-red-50 dark:hover:bg-red-900/20 hover:text-red-600 dark:hover:text-red-400'
           }`}
           onClick={() => toggleQuickFilter('popular')}
         >
-          <Flame className="h-4 w-4" />
+          <Flame className="h-3 w-3 sm:h-4 sm:w-4" />
           Popular
         </Badge>
         <Badge 
           variant="secondary" 
-          className={`px-4 py-2 cursor-pointer transition-all duration-300 flex items-center gap-2 text-sm font-medium rounded-xl border white-card ${
+          className={`px-3 sm:px-4 py-1.5 sm:py-2 cursor-pointer transition-all duration-300 flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-medium rounded-xl border white-card ${
             showRecent 
-              ? 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 border-green-200 dark:border-green-700/50 shadow-sm' 
+              ? '!bg-green-100 dark:!bg-green-900/30 !text-green-700 dark:!text-green-400 !border-green-200 dark:!border-green-700/50 shadow-sm' 
               : 'hover:bg-green-50 dark:hover:bg-green-900/20 hover:text-green-600 dark:hover:text-green-400'
           }`}
           onClick={() => toggleQuickFilter('recent')}
         >
-          <Clock className="h-4 w-4" />
-          Recently Updated
+          <Clock className="h-3 w-3 sm:h-4 sm:w-4" />
+          <span className="hidden sm:inline">Recently Updated</span>
+          <span className="sm:hidden">Recent</span>
         </Badge>
       </div>
 
-      {/* Results Info - Enhanced */}
-      <div className="mt-6 flex items-center justify-between">
-        <div className="text-sm text-gray-600 font-medium">
+      {/* Results Info - Enhanced Mobile Layout */}
+      <div className="mt-4 sm:mt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+        <div className="text-xs sm:text-sm text-gray-600 font-medium">
           <span className="inline-flex items-center gap-2">
             <div className="w-2 h-2 rounded-full bg-green-500"></div>
             Showing <span className="font-bold text-gray-900">{filteredServers.length}</span> of <span className="font-bold text-gray-900">{servers.length}</span> servers
           </span>
           {searchQuery && (
-            <span className="ml-2 text-purple-600">
+            <span className="block sm:inline sm:ml-2 text-purple-600 mt-1 sm:mt-0">
               for &quot;<span className="font-semibold">{searchQuery}</span>&quot;
             </span>
           )}

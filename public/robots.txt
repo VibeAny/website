@@ -4,7 +4,26 @@ Allow: /
 # Sitemaps
 Sitemap: https://vibemcp.net/sitemap.xml
 
-# Block AI crawlers if desired
+# Allow common search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+# Block AI crawlers for content protection
 User-agent: GPTBot
 Disallow: /
 
@@ -20,18 +39,34 @@ Disallow: /
 User-agent: Claude-Web
 Disallow: /
 
-# Allow common search engines
-User-agent: Googlebot
-Allow: /
+User-agent: ChatGPT-User
+Disallow: /
 
-User-agent: Bingbot
-Allow: /
+User-agent: Meta-ExternalAgent
+Disallow: /
 
-User-agent: Slurp
-Allow: /
+User-agent: PerplexityBot
+Disallow: /
 
-User-agent: DuckDuckBot
-Allow: /
+# Block common bad bots
+User-agent: SemrushBot
+Disallow: /
 
-# Crawl-delay for courtesy
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+# Crawl-delay for courtesy (1 second)
 Crawl-delay: 1
+
+# Specify cache files and build artifacts to avoid
+Disallow: /_next/
+Disallow: /api/
+Disallow: /*.json$
+Disallow: /*?*
+Disallow: /out/

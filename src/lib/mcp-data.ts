@@ -2,53 +2,28 @@ export interface McpServer {
   id: string
   name: string
   description: string
+  category: string
   repository: {
-    url: string
     owner: string
     name: string
+    url: string
     stars: number
     forks: number
     issues: number
-    watchers?: number  // 新增watchers字段
-    lastUpdated: string
-    defaultBranch: string
-    avatar?: string
+    watchers: number
+    lastUpdated: string | null
+    avatar: string | null
   }
-  category: string
-  tags: string[]
-  languages: string[]
-  platforms: string[]
-  operatingSystems: string[]
-  features: string[]
-  installation: {
-    npm?: string
-    pip?: string
-    manual?: string
-  }
-  documentation: {
-    readme: string
-    wiki?: string
-    website?: string
+  metadata: {
+    languages: string[]
+    scopes: string[]
+    platforms: string[]
+    isOfficial: boolean
+    tags: string[]
   }
   status: {
-    isOfficial: boolean
-    isActive: boolean
-    lastChecked: string
-    healthStatus: string
-  }
-  metrics: {
-    popularity: {
-      stars: number
-      watchers?: number  // 新增watchers字段
-      downloads: number
-      mentions: number
-    }
-    quality: {
-      hasTests: boolean
-      hasDocumentation: boolean
-      hasLicense: boolean
-      codeQuality: string
-    }
+    active: boolean
+    verified: boolean
   }
 }
 
@@ -142,14 +117,14 @@ export function getMcpCategories(): McpCategory[] {
 export function getMcpServers(): McpServer[] {
   const database = loadDatabaseSync()
   // Sort by popularity (stars) in descending order by default
-  return database.servers.sort((a, b) => b.metrics.popularity.stars - a.metrics.popularity.stars)
+  return database.servers.sort((a, b) => b.repository.stars - a.repository.stars)
 }
 
 export function getMcpServersByCategory(category: string): McpServer[] {
   const database = loadDatabaseSync()
   return database.servers
     .filter(server => server.category === category)
-    .sort((a, b) => b.metrics.popularity.stars - a.metrics.popularity.stars)
+    .sort((a, b) => b.repository.stars - a.repository.stars)
 }
 
 export function searchMcpServers(query: string): McpServer[] {
@@ -159,9 +134,9 @@ export function searchMcpServers(query: string): McpServer[] {
     .filter(server => 
       server.name.toLowerCase().includes(lowercaseQuery) ||
       server.description.toLowerCase().includes(lowercaseQuery) ||
-      server.tags.some(tag => tag.toLowerCase().includes(lowercaseQuery))
+      (server.metadata?.tags || []).some((tag: string) => tag.toLowerCase().includes(lowercaseQuery))
     )
-    .sort((a, b) => b.metrics.popularity.stars - a.metrics.popularity.stars)
+    .sort((a, b) => b.repository.stars - a.repository.stars)
 }
 
 export function filterMcpServers(filters: {
@@ -174,12 +149,12 @@ export function filterMcpServers(filters: {
   return database.servers
     .filter(server => {
       if (filters.category && server.category !== filters.category) return false
-      if (filters.language && !server.languages.includes(filters.language)) return false
-      if (filters.platform && !server.platforms.includes(filters.platform)) return false
-      if (filters.isOfficial !== undefined && server.status.isOfficial !== filters.isOfficial) return false
+      if (filters.language && !(server.metadata?.languages || []).includes(filters.language)) return false
+      if (filters.platform && !(server.metadata?.platforms || []).includes(filters.platform)) return false
+      if (filters.isOfficial !== undefined && server.metadata?.isOfficial !== filters.isOfficial) return false
       return true
     })
-    .sort((a, b) => b.metrics.popularity.stars - a.metrics.popularity.stars)
+    .sort((a, b) => b.repository.stars - a.repository.stars)
 }
 
 export function getMcpStatistics() {

@@ -47,13 +47,13 @@ export function McpServerGrid({ servers }: McpServerGridProps) {
   }
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
       {displayServers.map((server, index) => (
         <div key={server.id} className="fade-in" style={{animationDelay: `${0.05 * (index + 1)}s`}}>
           <Card className="white-card border-0 hover-lift h-full group transition-all duration-300">
             <CardHeader className="pb-4">
               <div className="flex items-center justify-between mb-4">
-                <div className="w-14 h-14 rounded-2xl overflow-hidden group-hover:scale-105 transition-transform duration-300 ring-2 ring-border group-hover:ring-primary/30">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl overflow-hidden group-hover:scale-105 transition-transform duration-300 ring-2 ring-border group-hover:ring-primary/30">
                   {server.repository.avatar ? (
                     <Image 
                       src={server.repository.avatar} 
@@ -82,13 +82,13 @@ export function McpServerGrid({ servers }: McpServerGridProps) {
                   )}
                 </div>
                 <div className="flex gap-2">
-                  {server.status.isOfficial && (
+                  {server.metadata?.isOfficial && (
                     <Badge className="bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 border-amber-200 dark:border-amber-700/50 px-3 py-1.5 text-xs flex items-center gap-1 shadow-sm font-medium">
                       <Award className="h-3 w-3" />
                       Official
                     </Badge>
                   )}
-                  {server.metrics.popularity.stars > 50 && (
+                  {server.repository.stars > 50 && (
                     <Badge className="bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 border-red-200 dark:border-red-700/50 px-3 py-1.5 text-xs flex items-center gap-1 shadow-sm font-medium">
                       <Flame className="h-3 w-3" />
                       Popular
@@ -114,7 +114,7 @@ export function McpServerGrid({ servers }: McpServerGridProps) {
 
                 {/* Language & Platform Tags */}
                 <div className="flex flex-wrap gap-1.5 min-h-[2rem]">
-                  {server.languages.slice(0, 2).map(lang => {
+                  {(server.metadata?.languages || []).slice(0, 2).map(lang => {
                     const IconComponent = languageIcons[lang as keyof typeof languageIcons];
                     return (
                       <Badge key={lang} variant="secondary" className="text-xs px-3 py-1.5 flex items-center gap-1.5 bg-primary/10 text-primary border-primary/20 font-medium">
@@ -123,7 +123,7 @@ export function McpServerGrid({ servers }: McpServerGridProps) {
                       </Badge>
                     );
                   })}
-                  {server.platforms.slice(0, 1).map(platform => {
+                  {(server.metadata?.platforms || []).slice(0, 1).map(platform => {
                     const IconComponent = platformIcons[platform as keyof typeof platformIcons];
                     return (
                       <Badge key={platform} variant="outline" className="text-xs px-3 py-1.5 flex items-center gap-1.5 border-border text-muted-foreground bg-muted/30 font-medium">
@@ -141,7 +141,7 @@ export function McpServerGrid({ servers }: McpServerGridProps) {
                       <div className="flex items-center justify-center w-6 h-6 rounded-full bg-yellow-100 dark:bg-yellow-900/30">
                         <Star className="h-3.5 w-3.5 text-yellow-600 dark:text-yellow-400 fill-current" />
                       </div>
-                      <span className="text-sm font-semibold text-foreground">{formatGitHubNumber(server.metrics.popularity.stars)}</span>
+                      <span className="text-sm font-semibold text-foreground">{formatGitHubNumber(server.repository.stars)}</span>
                     </div>
                     <div className="flex items-center gap-1.5">
                       <div className="flex items-center justify-center w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30">
@@ -163,16 +163,16 @@ export function McpServerGrid({ servers }: McpServerGridProps) {
                   </div>
                 </div>
                 
-                {/* Action Buttons - Enhanced */}
-                <div className="flex items-center gap-2 pt-2 mt-auto">
-                  <Button size="sm" className="flex-1 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white border-0 shadow-lg hover:shadow-xl transition-all duration-300 font-medium" asChild>
+                {/* Action Buttons - Enhanced Mobile */}
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 pt-2 mt-auto">
+                  <Button size="sm" className="flex-1 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white border-0 shadow-lg hover:shadow-xl transition-all duration-300 font-medium text-sm" asChild>
                     <Link href={server.repository.url} target="_blank" rel="noopener noreferrer">
                       View Repository
                     </Link>
                   </Button>
-                  {server.documentation.website && (
-                    <Button size="sm" variant="outline" className="border-gray-200 text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors" asChild>
-                      <Link href={server.documentation.website} target="_blank" rel="noopener noreferrer">
+                  {server.documentation?.website && (
+                    <Button size="sm" variant="outline" className="sm:flex-none border-gray-200 text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors" asChild>
+                      <Link href={server.documentation?.website} target="_blank" rel="noopener noreferrer">
                         <ExternalLink className="h-4 w-4" />
                       </Link>
                     </Button>

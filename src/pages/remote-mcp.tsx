@@ -23,7 +23,7 @@ import {
   Layers,
 } from "lucide-react";
 import { GetStaticProps } from "next";
-import Head from "next/head";
+import SEOHead from "@/components/SEOHead";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 import {
@@ -36,11 +36,64 @@ import { useState } from "react";
 export default function RemoteMcpPage() {
   const { t } = useTranslation("common");
   const title = t("remoteMcp.title");
+  const description = "Connect to public remote MCP servers instantly. No setup required - just copy the URL and start using powerful integrations in your AI conversations.";
 
   // Protocol selection state
   const [selectedProtocol, setSelectedProtocol] = useState<
     Record<string, "http" | "sse">
   >({});
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Remote MCP Services - Hosted Model Context Protocol Servers",
+    "description": description,
+    "url": "https://vibemcp.net/remote-mcp",
+    "mainEntity": {
+      "@type": "ItemList",
+      "name": "Remote MCP Servers Directory",
+      "description": "Curated list of third-party hosted MCP servers for instant integration",
+      "numberOfItems": remoteMcpServers.length,
+      "itemListElement": remoteMcpServers.slice(0, 5).map((server, index) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "item": {
+          "@type": "SoftwareApplication",
+          "name": server.name,
+          "description": server.description,
+          "applicationCategory": "AI Integration Tool",
+          "operatingSystem": "Cloud",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          }
+        }
+      }))
+    },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://vibemcp.net"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Remote MCP",
+          "item": "https://vibemcp.net/remote-mcp"
+        }
+      ]
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "VibeMCP",
+      "url": "https://vibemcp.net"
+    }
+  };
 
   // Get available protocols for a server
   const getAvailableProtocols = (server: RemoteMcpServer) => {
@@ -159,60 +212,14 @@ export default function RemoteMcpPage() {
 
   return (
     <>
-      <Head>
-        <title>{title} | VibeMCP</title>
-        <meta
-          name="description"
-          content="Connect to public remote MCP servers instantly. No setup required - just copy the URL and start using powerful integrations in your AI conversations."
-        />
-        <meta
-          name="keywords"
-          content="Remote MCP, Public MCP servers, Model Context Protocol, GitHub MCP, Sentry MCP, Linear MCP, Claude AI integration, Third-party MCP services"
-        />
-
-        {/* Open Graph */}
-        <meta property="og:title" content={title} />
-        <meta
-          property="og:description"
-          content="Connect to public remote MCP servers instantly. No setup required - just copy the URL and start using powerful integrations in your AI conversations."
-        />
-        <meta property="og:type" content="website" />
-        <meta property="og:locale" content="en_US" />
-        <meta property="og:url" content="https://vibemcp.net/remote-mcp" />
-        <meta property="og:site_name" content="VibeMCP" />
-        <meta
-          property="og:image"
-          content="https://vibemcp.net/og-remote-mcp.png"
-        />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta
-          property="og:image:alt"
-          content="Remote MCP Services - Hosted Model Context Protocol Servers"
-        />
-
-        {/* Twitter Cards */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={title} />
-        <meta
-          name="twitter:description"
-          content="Connect to public remote MCP servers instantly. No setup required - just copy the URL and start using powerful integrations in your AI conversations."
-        />
-        <meta
-          name="twitter:image"
-          content="https://vibemcp.net/og-remote-mcp.png"
-        />
-
-        {/* Canonical */}
-        <link rel="canonical" href="https://vibemcp.net/remote-mcp" />
-
-        {/* Robots */}
-        <meta name="robots" content="index, follow" />
-        <meta
-          name="googlebot"
-          content="index, follow, max-image-preview:large, max-snippet:-1"
-        />
-      </Head>
+      <SEOHead
+        title={title}
+        description={description}
+        keywords="Remote MCP, Public MCP servers, Model Context Protocol, GitHub MCP, Sentry MCP, Linear MCP, Claude AI integration, Third-party MCP services, hosted MCP, cloud MCP"
+        canonical="https://vibemcp.net/remote-mcp"
+        ogImage="/og-remote-mcp.png"
+        structuredData={structuredData}
+      />
 
       <PageLayout currentPath="/remote-mcp">
         {/* Hero Section */}

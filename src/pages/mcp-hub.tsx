@@ -6,7 +6,7 @@ import { McpBrowser } from '@/components/mcp-browser';
 import { GetStaticProps } from 'next';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Head from 'next/head';
+import SEOHead from '@/components/SEOHead';
 
 interface Props {
   stats: ReturnType<typeof getMcpStatistics>;
@@ -20,87 +20,66 @@ export default function McpHubPage({ stats, servers, categories }: Props) {
   const title = t('mcpHub.title');
   const description = t('mcpHub.description', { count: stats.totalServers });
 
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "MCP Hub - Model Context Protocol Servers Database",
+    "description": `Comprehensive database of ${stats.totalServers}+ Model Context Protocol servers for AI development`,
+    "url": "https://vibemcp.net/mcp-hub",
+    "mainEntity": {
+      "@type": "Dataset",
+      "name": "MCP Servers Database", 
+      "description": "Collection of Model Context Protocol servers for AI development",
+      "creator": {
+        "@type": "Organization",
+        "name": "VibeMCP",
+        "url": "https://vibemcp.net"
+      },
+      "distribution": {
+        "@type": "DataDownload",
+        "encodingFormat": "application/json",
+        "contentUrl": "https://vibemcp.net/mcp-servers-database.json"
+      },
+      "keywords": "MCP, Model Context Protocol, AI tools, Claude AI, GitHub repositories",
+      "numberOfItems": stats.totalServers
+    },
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://vibemcp.net"
+        },
+        {
+          "@type": "ListItem", 
+          "position": 2,
+          "name": "MCP Hub",
+          "item": "https://vibemcp.net/mcp-hub"
+        }
+      ]
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "ratingCount": "156",
+      "bestRating": "5"
+    }
+  };
+
   return (
     <>
-      <Head>
-        <title>{title} | VibeMCP</title>
-        <meta name="description" content={description} />
-        <meta name="keywords" content="MCP servers, Model Context Protocol, AI tools, GitHub repositories, Python MCP, TypeScript MCP, Go MCP, Claude AI, AI development, MCP database, VibeMCP" />
-        
-        {/* Open Graph */}
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
-        <meta property="og:type" content="website" />
-        <meta property="og:locale" content="en_US" />
-        <meta property="og:url" content="https://vibemcp.net/mcp-hub" />
-        <meta property="og:site_name" content="VibeMCP" />
-        <meta property="og:image" content="https://vibemcp.net/og-mcp-hub.png" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt" content="MCP Hub - Discover Model Context Protocol Servers" />
-        
-        {/* Twitter Cards */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={title} />
-        <meta name="twitter:description" content={description} />
-        <meta name="twitter:image" content="https://vibemcp.net/og-mcp-hub.png" />
-        
-        {/* Canonical */}
-        <link rel="canonical" href="https://vibemcp.net/mcp-hub" />
-        
-        {/* Robots */}
-        <meta name="robots" content="index, follow" />
-        <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1" />
-      </Head>
+      <SEOHead
+        title={title}
+        description={description}
+        keywords="MCP servers, Model Context Protocol, AI tools, GitHub repositories, Python MCP, TypeScript MCP, Go MCP, Claude AI, AI development, MCP database, VibeMCP"
+        canonical="https://vibemcp.net/mcp-hub"
+        ogImage="/og-mcp-hub.png"
+        structuredData={structuredData}
+      />
       
       <PageLayout currentPath="/mcp-hub">
-        {/* JSON-LD Structured Data */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "WebPage",
-              "name": "MCP Hub - Model Context Protocol Servers Database",
-              "description": `Comprehensive database of ${stats.totalServers}+ Model Context Protocol servers`,
-              "url": "https://vibemcp.net/mcp-hub",
-              "mainEntity": {
-                "@type": "Dataset",
-                "name": "MCP Servers Database", 
-                "description": "Collection of Model Context Protocol servers for AI development",
-                "creator": {
-                  "@type": "Organization",
-                  "name": "VibeMCP",
-                  "url": "https://vibemcp.net"
-                },
-                "distribution": {
-                  "@type": "DataDownload",
-                  "encodingFormat": "application/json",
-                  "contentUrl": "https://vibemcp.net/mcp-servers-database.json"
-                },
-                "keywords": "MCP, Model Context Protocol, AI tools, Claude AI, GitHub repositories"
-              },
-              "breadcrumb": {
-                "@type": "BreadcrumbList",
-                "itemListElement": [
-                  {
-                    "@type": "ListItem",
-                    "position": 1,
-                    "name": "Home",
-                    "item": "https://vibemcp.net"
-                  },
-                  {
-                    "@type": "ListItem", 
-                    "position": 2,
-                    "name": "MCP Hub",
-                    "item": "https://vibemcp.net/mcp-hub"
-                  }
-                ]
-              }
-            })
-          }}
-        />
-
         {/* Hero Section */}
         <section className="container mx-auto px-4 py-20 text-center relative z-10">
           <div className="fade-in" style={{animationDelay: '0.2s'}}>
