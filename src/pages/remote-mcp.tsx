@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { PageLayout } from "@/components/ui/page-layout";
+import Image from "next/image";
 import {
   ArrowRight,
   ExternalLink,
@@ -72,9 +73,11 @@ export default function RemoteMcpPage() {
       const owner = repoPath.split('/')[0];
       const avatarUrl = `https://github.com/${owner}.png?size=64`;
       return (
-        <img 
+        <Image 
           src={avatarUrl} 
           alt={`${server.name} logo`}
+          width={28}
+          height={28}
           className="w-full h-full rounded object-cover"
           onError={(e) => {
             // Fallback to GitHub icon if image fails to load

@@ -7,6 +7,14 @@ const nextConfig: NextConfig = {
   trailingSlash: true,
   images: {
     unoptimized: true,
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'github.com',
+        port: '',
+        pathname: '/**',
+      },
+    ],
   },
   // 只在生产环境使用静态导出
   ...(process.env.NODE_ENV === 'production' ? { output: 'export' } : {}),
