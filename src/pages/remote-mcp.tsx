@@ -9,6 +9,17 @@ import {
   Server,
   ChevronDown,
   Cloud,
+  Shield,
+  Zap,
+  Database,
+  MessageCircle,
+  CreditCard,
+  Globe,
+  Wrench,
+  Activity,
+  Search,
+  Brain,
+  Layers,
 } from "lucide-react";
 import { GetStaticProps } from "next";
 import Head from "next/head";
@@ -49,6 +60,69 @@ export default function RemoteMcpPage() {
   const getServerUrl = (serverId: string, server: RemoteMcpServer) => {
     const protocol = getCurrentProtocol(serverId, server);
     return server.urls[protocol] || "";
+  };
+
+  const getServerIcon = (server: RemoteMcpServer) => {
+    // For servers with GitHub repos, use the repository owner's avatar
+    if (server.githubUrl) {
+      const repoPath = server.githubUrl
+        .replace('https://github.com/', '')
+        .split('?')[0]  // Remove query parameters like ?tab=readme-ov-file#hosted-server
+        .split('#')[0]; // Remove hash fragments
+      const owner = repoPath.split('/')[0];
+      const avatarUrl = `https://github.com/${owner}.png?size=64`;
+      return (
+        <img 
+          src={avatarUrl} 
+          alt={`${server.name} logo`}
+          className="w-full h-full rounded object-cover"
+          onError={(e) => {
+            // Fallback to GitHub icon if image fails to load
+            const target = e.target as HTMLImageElement;
+            target.style.display = 'none';
+            target.nextElementSibling?.classList.remove('hidden');
+          }}
+        />
+      );
+    }
+
+    // Use GitHub logo for GitHub server specifically
+    if (server.id === 'github') {
+      return <Github className="h-7 w-7 text-gray-600 dark:text-gray-400" />;
+    }
+
+    // Custom icons based on service type and category for non-GitHub repos
+    switch (server.id) {
+      case 'sentry':
+        return <Shield className="h-7 w-7 text-gray-600 dark:text-gray-400" />;
+      case 'linear':
+      case 'asana':
+        return <Zap className="h-7 w-7 text-gray-600 dark:text-gray-400" />;
+      case 'neon':
+      case 'coingecko':
+        return <Database className="h-7 w-7 text-gray-600 dark:text-gray-400" />;
+      case 'intercom':
+        return <MessageCircle className="h-7 w-7 text-gray-600 dark:text-gray-400" />;
+      case 'paypal':
+      case 'square':
+        return <CreditCard className="h-7 w-7 text-gray-600 dark:text-gray-400" />;
+      case 'wix':
+      case 'webflow':
+      case 'edgeone-pages':
+        return <Globe className="h-7 w-7 text-gray-600 dark:text-gray-400" />;
+      case 'globalping':
+        return <Activity className="h-7 w-7 text-gray-600 dark:text-gray-400" />;
+      case 'fetch':
+        return <Search className="h-7 w-7 text-gray-600 dark:text-gray-400" />;
+      case 'sequential-thinking':
+        return <Brain className="h-7 w-7 text-gray-600 dark:text-gray-400" />;
+      case 'deepwiki':
+        return <Layers className="h-7 w-7 text-gray-600 dark:text-gray-400" />;
+      case 'atlassian':
+        return <Wrench className="h-7 w-7 text-gray-600 dark:text-gray-400" />;
+      default:
+        return <Server className="h-7 w-7 text-gray-600 dark:text-gray-400" />;
+    }
   };
 
   const generateCursorLink = (serverName: string, url: string) => {
@@ -156,12 +230,12 @@ export default function RemoteMcpPage() {
             </Badge>
           </div>
           <div className="fade-in" style={{ animationDelay: "0.4s" }}>
-            <h1 className="text-6xl md:text-7xl font-black mb-8 bg-gradient-to-r from-gray-900 via-blue-800 to-green-800 bg-clip-text text-transparent leading-tight max-w-5xl mx-auto">
+            <h1 className="text-6xl md:text-7xl font-black mb-8 bg-gradient-to-r from-gray-900 via-blue-800 to-green-800 dark:from-gray-100 dark:via-blue-300 dark:to-green-300 bg-clip-text text-transparent leading-tight max-w-5xl mx-auto">
               {t("remoteMcp.heading", { defaultValue: "Remote MCP Servers" })}
             </h1>
           </div>
           <div className="fade-in" style={{ animationDelay: "0.6s" }}>
-            <p className="text-xl md:text-2xl text-gray-600 mb-12 max-w-4xl mx-auto leading-relaxed font-medium">
+            <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed font-medium">
               {t("remoteMcp.subtitle", {
                 defaultValue:
                   "Discover third-party hosted MCP servers ready for instant integration",
@@ -174,7 +248,7 @@ export default function RemoteMcpPage() {
             className="fade-in max-w-2xl mx-auto"
             style={{ animationDelay: "0.8s" }}
           >
-            <div className="flex flex-wrap justify-center gap-6 mb-16 text-sm font-medium text-gray-500">
+            <div className="flex flex-wrap justify-center gap-6 mb-16 text-sm font-medium text-gray-500 dark:text-gray-400">
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 rounded-full bg-green-500"></div>
                 <span>{remoteMcpServers.length} Active Servers</span>
@@ -203,11 +277,11 @@ export default function RemoteMcpPage() {
                 <Card className="white-card border-0 p-6 rounded-2xl transition-none hover:shadow-md hover:shadow-gray-200/50">
                   <div className="flex items-start space-x-5">
                     {/* Logo */}
-                    <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center flex-shrink-0 shadow-sm">
-                      {server.icon === "Github" ? (
-                        <Github className="h-7 w-7 text-gray-600" />
-                      ) : (
-                        <Server className="h-7 w-7 text-gray-600" />
+                    <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 flex items-center justify-center flex-shrink-0 shadow-sm relative">
+                      {getServerIcon(server)}
+                      {/* Fallback icon for GitHub repos */}
+                      {server.githubUrl && (
+                        <Github className="h-7 w-7 text-gray-600 dark:text-gray-400 hidden" />
                       )}
                     </div>
 
@@ -232,10 +306,10 @@ export default function RemoteMcpPage() {
                               variant="secondary"
                               className={`text-xs px-2 py-1 font-semibold rounded-full ${
                                 server.authType === "oauth"
-                                  ? "bg-blue-50 text-blue-600 border-blue-200"
+                                  ? "bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 border-blue-200 dark:border-blue-700"
                                   : server.authType === "open"
-                                  ? "bg-green-50 text-green-600 border-green-200"
-                                  : "bg-gray-50 text-gray-600 border-gray-200"
+                                  ? "bg-green-50 dark:bg-green-900/30 text-green-600 dark:text-green-400 border-green-200 dark:border-green-700"
+                                  : "bg-gray-50 dark:bg-gray-800 text-gray-600 dark:text-gray-400 border-gray-200 dark:border-gray-600"
                               }`}
                             >
                               {server.authType}
@@ -255,7 +329,7 @@ export default function RemoteMcpPage() {
                       </div>
 
                       {/* Description */}
-                      <p className="text-gray-600 text-sm mb-3 leading-relaxed line-clamp-2">
+                      <p className="text-gray-600 dark:text-gray-300 text-sm mb-3 leading-relaxed line-clamp-2">
                         {server.description}
                       </p>
 
@@ -264,7 +338,7 @@ export default function RemoteMcpPage() {
                         {server.features.slice(0, 4).map((feature, i) => (
                           <span
                             key={i}
-                            className="text-xs px-2 py-1 bg-gray-100 text-gray-700 rounded-md font-medium"
+                            className="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-md font-medium"
                           >
                             {feature}
                           </span>
@@ -393,10 +467,10 @@ export default function RemoteMcpPage() {
         {/* How to Connect */}
         <section className="container mx-auto px-4 py-16 relative z-10">
           <div className="text-center mb-16">
-            <h2 className="text-5xl md:text-6xl font-black mb-8 bg-gradient-to-r from-gray-900 via-blue-800 to-green-800 bg-clip-text text-transparent leading-tight">
+            <h2 className="text-5xl md:text-6xl font-black mb-8 bg-gradient-to-r from-gray-900 via-blue-800 to-green-800 dark:from-gray-100 dark:via-blue-300 dark:to-green-300 bg-clip-text text-transparent leading-tight">
               How to Connect
             </h2>
-            <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-medium">
+            <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed font-medium">
               Connect to third-party hosted MCP servers in just 3 simple steps
             </p>
           </div>
@@ -409,10 +483,10 @@ export default function RemoteMcpPage() {
               <div className="w-20 h-20 white-card rounded-3xl flex items-center justify-center mx-auto mb-6 ui-pulse-glow shadow-lg">
                 <span className="text-3xl font-black text-gradient">1</span>
               </div>
-              <h3 className="text-xl font-bold mb-4 bg-gradient-to-r from-gray-900 to-blue-800 bg-clip-text text-transparent">
+              <h3 className="text-xl font-bold mb-4 bg-gradient-to-r from-gray-900 to-blue-800 dark:from-gray-100 dark:to-blue-300 bg-clip-text text-transparent">
                 Choose Server
               </h3>
-              <p className="text-gray-600 font-medium leading-relaxed">
+              <p className="text-gray-600 dark:text-gray-300 font-medium leading-relaxed">
                 Browse and select from our curated directory of third-party MCP
                 servers
               </p>
@@ -425,10 +499,10 @@ export default function RemoteMcpPage() {
               <div className="w-20 h-20 white-card rounded-3xl flex items-center justify-center mx-auto mb-6 ui-pulse-glow shadow-lg">
                 <span className="text-3xl font-black text-gradient">2</span>
               </div>
-              <h3 className="text-xl font-bold mb-4 bg-gradient-to-r from-gray-900 to-blue-800 bg-clip-text text-transparent">
+              <h3 className="text-xl font-bold mb-4 bg-gradient-to-r from-gray-900 to-blue-800 dark:from-gray-100 dark:to-blue-300 bg-clip-text text-transparent">
                 Configure Client
               </h3>
-              <p className="text-gray-600 font-medium leading-relaxed">
+              <p className="text-gray-600 dark:text-gray-300 font-medium leading-relaxed">
                 Click &quot;Connect&quot; and choose your preferred client
                 (Cursor, VS Code) or copy the URL
               </p>
@@ -441,10 +515,10 @@ export default function RemoteMcpPage() {
               <div className="w-20 h-20 white-card rounded-3xl flex items-center justify-center mx-auto mb-6 ui-pulse-glow shadow-lg">
                 <span className="text-3xl font-black text-gradient">3</span>
               </div>
-              <h3 className="text-xl font-bold mb-4 bg-gradient-to-r from-gray-900 to-blue-800 bg-clip-text text-transparent">
+              <h3 className="text-xl font-bold mb-4 bg-gradient-to-r from-gray-900 to-blue-800 dark:from-gray-100 dark:to-blue-300 bg-clip-text text-transparent">
                 Start Using
               </h3>
-              <p className="text-gray-600 font-medium leading-relaxed">
+              <p className="text-gray-600 dark:text-gray-300 font-medium leading-relaxed">
                 Restart your client and start using the MCP server features in
                 your conversations
               </p>

@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { useTranslation } from 'next-i18next'
+import { MessageCircle } from 'lucide-react'
 
 export function Footer() {
   const { t } = useTranslation('common')
@@ -33,6 +34,18 @@ export function Footer() {
             <FooterLink href="#" label={t('common.privacy')} />
             <FooterLink href="#" label={t('common.terms')} />
             <FooterLink href="#" label={t('common.support')} />
+            
+            {/* Discord Link */}
+            <a
+              href="https://discord.gg/TdPGpp9vNe"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-primary transition-all duration-300 hover-glow px-3 py-1 rounded-lg flex items-center space-x-2"
+              title="Join Discord"
+            >
+              <MessageCircle className="w-4 h-4" />
+              <span>Discord</span>
+            </a>
           </div>
         </div>
       </div>

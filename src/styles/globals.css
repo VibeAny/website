@@ -207,6 +207,54 @@ body {
   border-color: rgba(34, 197, 94, 0.3) !important;
 }
 
+.dark .bg-purple-50 {
+  background: rgba(168, 85, 247, 0.2) !important;
+}
+
+.dark .text-purple-600 {
+  color: rgb(168, 85, 247) !important;
+}
+
+.dark .border-purple-200 {
+  border-color: rgba(168, 85, 247, 0.3) !important;
+}
+
+.dark .bg-blue-50 {
+  background: rgba(59, 130, 246, 0.2) !important;
+}
+
+.dark .text-blue-600 {
+  color: rgb(59, 130, 246) !important;
+}
+
+.dark .border-blue-200 {
+  border-color: rgba(59, 130, 246, 0.3) !important;
+}
+
+.dark .bg-cyan-50 {
+  background: rgba(6, 182, 212, 0.2) !important;
+}
+
+.dark .text-cyan-600 {
+  color: rgb(6, 182, 212) !important;
+}
+
+.dark .border-cyan-200 {
+  border-color: rgba(6, 182, 212, 0.3) !important;
+}
+
+.dark .bg-pink-50 {
+  background: rgba(236, 72, 153, 0.2) !important;
+}
+
+.dark .text-pink-600 {
+  color: rgb(236, 72, 153) !important;
+}
+
+.dark .border-pink-200 {
+  border-color: rgba(236, 72, 153, 0.3) !important;
+}
+
 /* Text color improvements */
 .dark .text-muted-foreground {
   color: rgba(255, 255, 255, 0.7) !important;

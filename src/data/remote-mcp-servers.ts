@@ -396,11 +396,11 @@ export const categoryLabels = {
 };
 
 export const categoryColors = {
-  development: 'bg-blue-50 text-blue-600 border-blue-200',
-  productivity: 'bg-purple-50 text-purple-600 border-purple-200',
-  payment: 'bg-green-50 text-green-600 border-green-200',
-  web: 'bg-orange-50 text-orange-600 border-orange-200',
-  data: 'bg-cyan-50 text-cyan-600 border-cyan-200',
-  communication: 'bg-pink-50 text-pink-600 border-pink-200',
-  utility: 'bg-gray-50 text-gray-600 border-gray-200'
+  development: 'bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 border-blue-200 dark:border-blue-700',
+  productivity: 'bg-purple-50 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400 border-purple-200 dark:border-purple-800',
+  payment: 'bg-green-50 dark:bg-green-900/30 text-green-600 dark:text-green-400 border-green-200 dark:border-green-700',
+  web: 'bg-orange-50 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 border-orange-200 dark:border-orange-700',
+  data: 'bg-cyan-50 dark:bg-cyan-900/30 text-cyan-600 dark:text-cyan-400 border-cyan-200 dark:border-cyan-700',
+  communication: 'bg-pink-50 dark:bg-pink-900/30 text-pink-600 dark:text-pink-400 border-pink-200 dark:border-pink-700',
+  utility: 'bg-gray-50 dark:bg-gray-800 text-gray-600 dark:text-gray-400 border-gray-200 dark:border-gray-600'
 };
