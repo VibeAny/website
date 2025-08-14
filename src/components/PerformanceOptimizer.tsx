@@ -6,8 +6,7 @@ interface PerformanceOptimizerProps {
 }
 
 export const PerformanceOptimizer: React.FC<PerformanceOptimizerProps> = ({
-  enablePreload = true,
-  enablePrefetch = true
+  enablePreload = true
 }) => {
   return (
     <>

@@ -6,10 +6,10 @@ declare global {
     gtag: (
       command: 'config' | 'event' | 'js' | 'set',
       targetId: string | Date,
-      config?: {
-        [key: string]: any;
-      }
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      config?: Record<string, any>
     ) => void;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     dataLayer: any[];
   }
 }
@@ -150,16 +150,19 @@ export const trackVibeMCPEvents = {
  * 设置用户属性
  * @param properties 用户属性
  */
-export const setUserProperties = (properties: { [key: string]: any }): void => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const setUserProperties = (properties: Record<string, any>): void => {
   if (!isGAAvailable()) return;
 
   window.gtag('set', 'user_properties', properties);
 };
 
-export default {
+const analyticsUtils = {
   trackPageView,
   trackEvent,
   trackVibeMCPEvents,
   setUserProperties,
   isGAAvailable
 };
+
+export default analyticsUtils;

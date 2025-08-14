@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import { GetStaticProps } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
+import Link from 'next/link';
 import SEOHead from '@/components/SEOHead';
 
 export default function Home() {
@@ -56,8 +57,8 @@ export default function Home() {
         <h1>VibeMCP - Cloud-Native MCP Services Platform</h1>
         <p>Deploy and manage Model Context Protocol (MCP) servers in the cloud. Connect Claude AI to any service with our enterprise-grade cloud platform.</p>
         <nav>
-          <a href="/mcp-hub">MCP Hub - Browse MCP Servers</a>
-          <a href="/remote-mcp">Remote MCP Services</a>
+          <Link href="/mcp-hub">MCP Hub - Browse MCP Servers</Link>
+          <Link href="/remote-mcp">Remote MCP Services</Link>
         </nav>
       </div>
     </>

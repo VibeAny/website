@@ -3,7 +3,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Star, GitBranch, Database, ExternalLink, Award, Flame, Search, Eye, Github } from "lucide-react"
+import { Star, GitBranch, Database, Search, Eye, Github, Award, Flame } from "lucide-react"
 import Link from 'next/link'
 import Image from 'next/image'
 import { McpServer } from '@/lib/mcp-data'
@@ -170,13 +170,6 @@ export function McpServerGrid({ servers }: McpServerGridProps) {
                       View Repository
                     </Link>
                   </Button>
-                  {server.documentation?.website && (
-                    <Button size="sm" variant="outline" className="sm:flex-none border-gray-200 text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors" asChild>
-                      <Link href={server.documentation?.website} target="_blank" rel="noopener noreferrer">
-                        <ExternalLink className="h-4 w-4" />
-                      </Link>
-                    </Button>
-                  )}
                 </div>
               </div>
             </CardContent>

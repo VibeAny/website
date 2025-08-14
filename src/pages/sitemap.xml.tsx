@@ -1,28 +1,34 @@
-import { GetServerSideProps } from 'next';
+// This file generates a sitemap.xml during build process
+// For static exports, we need to handle this differently
+import fs from 'fs';
+import path from 'path';
 
-// Define your static pages
-const STATIC_PAGES = [
-  '',                    // Homepage 
-  '/mcp-hub',           // MCP Hub page
-  '/remote-mcp',        // Remote MCP page
-];
+function SiteMapPage() {
+  // This page should never be rendered directly
+  return null;
+}
 
-// Define supported locales
-const LOCALES = ['en', 'zh'];
-
-function generateSiteMap(pages: string[], locales: string[]) {
+// Generate sitemap.xml as a static file during build
+export async function getStaticProps() {
+  const STATIC_PAGES = [
+    '',                    // Homepage 
+    '/mcp-hub',           // MCP Hub page
+    '/remote-mcp',        // Remote MCP page
+  ];
+  
+  const LOCALES = ['en', 'zh'];
   const baseUrl = 'https://vibemcp.net';
   
-  return `<?xml version="1.0" encoding="UTF-8"?>
+  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
         xmlns:xhtml="http://www.w3.org/1999/xhtml"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-${pages
+${STATIC_PAGES
   .map((page) => {
-    return locales
+    return LOCALES
       .map((locale) => {
         const url = locale === 'en' ? `${baseUrl}${page}` : `${baseUrl}/${locale}${page}`;
-        const alternateUrls = locales
+        const alternateUrls = LOCALES
           .filter(l => l !== locale)
           .map(l => {
             const altUrl = l === 'en' ? `${baseUrl}${page}` : `${baseUrl}/${l}${page}`;
@@ -30,15 +36,13 @@ ${pages
           })
           .join('\n');
 
-        // Determine priority based on page importance
         let priority = '0.7';
-        if (page === '') priority = '1.0';  // Homepage
-        else if (page === '/mcp-hub') priority = '0.9';  // Main feature page
-        else if (page === '/remote-mcp') priority = '0.8';  // Secondary feature page
+        if (page === '') priority = '1.0';
+        else if (page === '/mcp-hub') priority = '0.9';
+        else if (page === '/remote-mcp') priority = '0.8';
         
-        // Determine change frequency
         let changeFreq = 'weekly';
-        if (page === '/mcp-hub') changeFreq = 'daily';  // Database updates daily
+        if (page === '/mcp-hub') changeFreq = 'daily';
         
         return `  <url>
     <loc>${url}</loc>
@@ -52,27 +56,14 @@ ${alternateUrls}
   })
   .join('\n')}
 </urlset>`;
-}
 
-function SiteMap() {
-  // getServerSideProps will do the heavy lifting
-}
-
-export const getServerSideProps: GetServerSideProps = async ({ res }) => {
-  // Generate the XML sitemap with the pages data
-  const sitemap = generateSiteMap(STATIC_PAGES, LOCALES);
-
-  res.setHeader('Content-Type', 'text/xml');
-  // Cache for 24 hours
-  res.setHeader('Cache-Control', 's-maxage=86400, stale-while-revalidate');
-  
-  // Write the XML to the response
-  res.write(sitemap);
-  res.end();
+  // Write sitemap to public directory
+  const publicPath = path.join(process.cwd(), 'public', 'sitemap.xml');
+  fs.writeFileSync(publicPath, sitemap);
 
   return {
     props: {},
   };
-};
+}
 
-export default SiteMap;
+export default SiteMapPage;
