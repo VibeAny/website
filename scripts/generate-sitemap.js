@@ -1,22 +1,17 @@
-// This file generates a sitemap.xml during build process
-// For static exports, we need to handle this differently
-import fs from 'fs';
-import path from 'path';
+const fs = require('fs');
+const path = require('path');
 
-function SiteMapPage() {
-  // This page should never be rendered directly
-  return null;
-}
+// Define your static pages
+const STATIC_PAGES = [
+  '',                    // Homepage 
+  '/mcp-hub',           // MCP Hub page
+  '/remote-mcp',        // Remote MCP page
+];
 
-// Generate sitemap.xml as a static file during build
-export async function getStaticProps() {
-  const STATIC_PAGES = [
-    '',                    // Homepage 
-    '/mcp-hub',           // MCP Hub page
-    '/remote-mcp',        // Remote MCP page
-  ];
-  
-  const LOCALES = ['en', 'zh'];
+// Define supported locales
+const LOCALES = ['en', 'zh'];
+
+function generateSiteMap() {
   const baseUrl = 'https://vibemcp.net';
   
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
@@ -57,13 +52,12 @@ ${alternateUrls}
   .join('\n')}
 </urlset>`;
 
-  // Write sitemap to public directory
-  const publicPath = path.join(process.cwd(), 'public', 'sitemap.xml');
-  fs.writeFileSync(publicPath, sitemap);
-
-  return {
-    props: {},
-  };
+  return sitemap;
 }
 
-export default SiteMapPage;
+// Generate and write sitemap
+const sitemap = generateSiteMap();
+const publicPath = path.join(__dirname, '..', 'public', 'sitemap.xml');
+
+fs.writeFileSync(publicPath, sitemap);
+console.log('✅ Sitemap generated successfully at:', publicPath);
