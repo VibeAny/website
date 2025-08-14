@@ -82,7 +82,7 @@ export default function McpHubPage({ stats, servers, categories }: Props) {
       <PageLayout currentPath="/mcp-hub">
         {/* Hero Section */}
         <section className="container mx-auto px-4 py-20 text-center relative z-10">
-          <div className="fade-in" style={{animationDelay: '0.2s'}}>
+          <div className="fade-in initial-load" style={{animationDelay: '0.1s'}}>
             <Badge className="mb-8 white-card px-6 py-2 ui-pulse-glow bg-gradient-to-r from-blue-50 to-purple-50 text-purple-700 border-purple-200/50 shadow-lg" variant="secondary">
               <div className="flex items-center gap-2">
                 <Database className="w-4 h-4" />
@@ -90,19 +90,19 @@ export default function McpHubPage({ stats, servers, categories }: Props) {
               </div>
             </Badge>
           </div>
-          <div className="fade-in" style={{animationDelay: '0.4s'}}>
+          <div className="fade-in initial-load" style={{animationDelay: '0.2s'}}>
             <h1 className="text-6xl md:text-7xl font-black mb-8 bg-gradient-to-r from-gray-900 via-purple-800 to-blue-800 bg-clip-text text-transparent leading-tight max-w-5xl mx-auto">
               {t('mcpHub.heading')}
             </h1>
           </div>
-          <div className="fade-in" style={{animationDelay: '0.6s'}}>
+          <div className="fade-in initial-load" style={{animationDelay: '0.3s'}}>
             <p className="text-xl md:text-2xl text-gray-600 mb-12 max-w-4xl mx-auto leading-relaxed font-medium">
               {t('mcpHub.subtitle', { count: stats.totalServers })}
             </p>
           </div>
           
           {/* Quick Stats Bar */}
-          <div className="fade-in max-w-2xl mx-auto" style={{animationDelay: '0.8s'}}>
+          <div className="fade-in initial-load max-w-2xl mx-auto" style={{animationDelay: '0.4s'}}>
             <div className="flex flex-wrap justify-center gap-6 mb-16 text-sm font-medium text-gray-500">
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 rounded-full bg-green-500"></div>

@@ -17,10 +17,12 @@ export function McpBrowser({ servers, categories }: McpBrowserProps) {
   const [filteredServers, setFilteredServers] = useState<McpServer[]>(servers)
   const [displayedCount, setDisplayedCount] = useState(ITEMS_PER_PAGE)
   const [isLoading, setIsLoading] = useState(false)
+  const [newlyLoadedItems, setNewlyLoadedItems] = useState<number>(0)
 
   const handleFilteredServers = useCallback((filtered: McpServer[]) => {
     setFilteredServers(filtered)
     setDisplayedCount(ITEMS_PER_PAGE) // Reset to first page when filters change
+    // Note: Don't reset newlyLoadedItems to preserve animation state
   }, [])
 
   const loadMore = useCallback(async () => {
@@ -28,11 +30,18 @@ export function McpBrowser({ servers, categories }: McpBrowserProps) {
     
     setIsLoading(true)
     
-    // Simulate loading delay for better UX
-    await new Promise(resolve => setTimeout(resolve, 800))
+    // Reduced loading delay for smoother UX
+    await new Promise(resolve => setTimeout(resolve, 400))
     
-    setDisplayedCount(prev => Math.min(prev + ITEMS_PER_PAGE, filteredServers.length))
+    const currentCount = displayedCount
+    const newCount = Math.min(currentCount + ITEMS_PER_PAGE, filteredServers.length)
+    
+    setDisplayedCount(newCount)
+    setNewlyLoadedItems(newCount - currentCount) // Track newly loaded items
     setIsLoading(false)
+    
+    // Reset newly loaded items counter after animation completes
+    setTimeout(() => setNewlyLoadedItems(0), 1000)
   }, [filteredServers.length, isLoading, displayedCount])
 
   // Scroll detection for infinite scroll
@@ -87,7 +96,11 @@ export function McpBrowser({ servers, categories }: McpBrowserProps) {
       />
 
       {/* Server Grid */}
-      <McpServerGrid servers={displayedServers} />
+      <McpServerGrid 
+        servers={displayedServers} 
+        newlyLoadedCount={newlyLoadedItems}
+        startIndex={displayedCount - displayedServers.length}
+      />
 
       {/* Loading Indicator - Enhanced */}
       {isLoading && (
