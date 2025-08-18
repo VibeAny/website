@@ -19,10 +19,10 @@ ${STATIC_PAGES
     const url = `${baseUrl}${page}`;
     
     // Determine priority based on page importance
-    let priority = '0.7';
-    if (page === '') priority = '1.0';  // Homepage
-    else if (page === '/mcp-hub') priority = '0.9';  // Main feature page
-    else if (page === '/remote-mcp') priority = '0.8';  // Secondary feature page
+    let priority = 0.7;
+    if (page === '') priority = 1.0;  // Homepage
+    else if (page === '/mcp-hub') priority = 0.9;  // Main feature page
+    else if (page === '/remote-mcp') priority = 0.8;  // Secondary feature page
     
     // Determine change frequency
     let changeFreq = 'weekly';

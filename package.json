@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "node scripts/generate-sitemap.js && next build && node scripts/copy-locales.js",
+    "build": "node scripts/generate-sitemap.js && node scripts/validate-sitemap.js && next build && node scripts/copy-locales.js",
     "start": "next start",
     "lint": "next lint"
   },
